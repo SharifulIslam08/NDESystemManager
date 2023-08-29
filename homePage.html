@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/homePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <button id="sidebarButton">Open Sidebar</button>
+  <div id="sidebar">
+    <button id="closeButton">Close Sidebar</button>
+    <h2>Sidebar Content</h2>
+    <p>My Menu <i class="bi bi-chevron-down"></i></p>
+  </div>
+    <section id="MenuAndSideNavSection">
+        <div class="container-fluid text-center">
+            <div class="row">
+              <div class="col-2 ">
+                <label id="m-names">NDE ERP System</label>
+              </div>
+              <div class="col-9 bg-danger">
+                Column
+              </div>
+              <div class="col-1 bg-secondary">
+                <div class="dropdown">
+                    <button type="button">
+                        <i style="font-size: 48px;" class="bi bi-person-circle"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+    <script src="/homePage.js"></script>
+    
+</body>
+</html>

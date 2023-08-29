@@ -1,0 +1,17 @@
+
+/* sidebar css start   */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hide the sidebar by default */
+    width: 250px;
+    height: 100%;
+    background-color: #f1f1f1;
+    padding: 20px;
+    transition: left 0.3s ease;
+  }
+  
+  #sidebar.active {
+    left: 0; /* Show the sidebar when active class is added */
+  }
+/* sidebar css end   */

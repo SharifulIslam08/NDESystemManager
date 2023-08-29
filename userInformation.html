@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Report Form</title>
+    <!-- <link rel="stylesheet" href="./addReport.CSS"> -->
+    <link rel="stylesheet" href="/Nav&SideNav/nav&SideNav.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+    <style>
+
+        .container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Add any other styles you want for the container */
+        }
+    </style>
+</head>
+<body style="background-color:aliceblue;">
+    <div id="Nav&SideNav"></div>
+    
+    <!-- bg-opacity-10 col-sm-3 col-md-4 col-lg-5 -->
+    <div style="position: absolute; top: 25%; left: 6%;" class="container bg-primary-subtle ">
+        <h2><u><i>User Profile Information</i></u></h2>
+        <br>
+        <form id="myForm">
+            <div class="row g-3">
+                <div class="col">
+                    <label for="DisplayName">User Code:</label>
+                    <span style="border: none !important;" class="form-control w-100 h-50" id="UserCode"></span>
+                </div>
+                <div class="col">
+                    <label for="ReportName">User Name:</label>
+                    <span style="border: none !important;" class="form-control w-100 h-50" id="DisplayName"></span>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col">
+                    <label for="ReportPath">Gmail:</label>
+                    <span style="border: none !important;" class="form-control w-100 h-50" id="Gmail"></span>
+                </div>
+                <div class="col">
+                    <label for="ConName">Company:</label>
+                    <span style="border: none !important;" class="form-control w-100 h-50" id="Company"></span>
+                </div>
+            </div>
+        <br>
+        </form>
+
+    </div>
+
+    <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+    <script src="/userInformation.js"></script>
+    <script src="/Nav&SideNav/nav&SideNav.js"></script>
+</body>
+</html>

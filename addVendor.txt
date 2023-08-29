@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Panels</title>
+  <!-- Include Bootstrap CSS and JavaScript -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="d-inline-flex gap-1">
+      <button class="btn btn-primary toggle-btn" data-target="#panel1">Panel 1</button>
+      <button class="btn btn-primary toggle-btn" data-target="#panel2">Panel 2</button>
+      <!-- Add more buttons as needed -->
+    </div>
+
+    <div class="collapse show" id="panel1">
+      <div class="card card-body">
+        Panel 1 content.
+      </div>
+    </div>
+
+    <div class="collapse" id="panel2">
+      <div class="card card-body">
+        Panel 2 content.
+      </div>
+    </div>
+    <!-- Add more panels as needed -->
+  </div>
+
+  <script>
+    // Get all toggle buttons
+    var toggleButtons = document.querySelectorAll('.toggle-btn');
+
+    // Add click event to each toggle button
+    toggleButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Get the target panel's ID from the data attribute
+        var target = this.getAttribute('data-target');
+        
+        // Get all collapse panels
+        var panels = document.querySelectorAll('.collapse');
+        
+        // Hide all panels
+        panels.forEach(function(panel) {
+          panel.classList.remove('show');
+        });
+        
+        // Show the selected panel
+        document.querySelector(target).classList.add('show');
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor Form</title>
+    <link rel="stylesheet" href="/addVendor.css">
+    <link rel="stylesheet" href="/Nav&SideNav/nav&SideNav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+</head>
+  <body>
+    <div id="Nav&SideNav"></div>
+    <div id="motherDiv">
+        <!-- <div id ="AddMenuSectionName">Add Menu</div> -->
+        <div id="VendorMaster" class=" AddMenuInputContainer">
+        </div>
+        <div class="m-2">
+          <div class="d-inline-flex gap-1">
+            <button class="btn btn-primary toggle-btn" data-target="#panel1">General Information</button>
+            <button class="btn btn-primary toggle-btn" data-target="#panel2">Vendor`s Products & Services</button>
+            <button class="btn btn-primary toggle-btn" data-target="#panel3">Contact Person</button>
+            <button class="btn btn-primary toggle-btn" data-target="#panel4">Factory Details</button>
+            <button class="btn btn-primary toggle-btn" data-target="#panel5">Project Allowed to Work</button>
+            <button class="btn btn-primary toggle-btn" data-target="#panel6">Payment Terms</button>
+            <!-- Add more buttons as needed -->
+          </div>
+          <div class="collapse show" id="panel1">
+            <div id="GeneralInformation" class="AddMenuInputContainer">
+            </div>
+          </div>
+          <div class="collapse" id="panel2">
+            <div id="details" class="border mt-5">
+              <div id="DynamicDetailsTable" class="container" style="height: 180px;">
+                <div id="VendorsProductsServices" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="VendorsProductsServices" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i>
+                  <!-- <i id="AddRow" class="toggle-btn" data-target="#gridContainer-data" class="fa-solid fa-plus"></i> -->
+                  <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+             </div>
+          </div>
+  
+          <div class="collapse" id="panel3">
+            <div id="details" class="border mt-5">
+              <div id="DynamicDetailsTable" class="container" style="height: 180px;">
+                <div id="ContactPerson" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="ContactPerson" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i>
+                  <!-- <i id="AddRow" class="toggle-btn" data-target="#gridContainer-data" class="fa-solid fa-plus"></i> -->
+                  <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel4">
+            <div id="details" class="border mt-5">
+              <div id="DynamicDetailsTable" class="container" style="height: 180px;">
+                <div id="FactoryDetails" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="FactoryDetails" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i>
+                  <!-- <i id="AddRow" class="toggle-btn" data-target="#gridContainer-data" class="fa-solid fa-plus"></i> -->
+                  <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel5">
+            <div id="details" class="border mt-5">
+              <div id="DynamicDetailsTable" class="container" style="height: 180px;">
+                <div id="ProjectAllowedtoWork" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="ProjectAllowedtoWork" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i>
+                  <!-- <i id="AddRow" class="toggle-btn" data-target="#gridContainer-data" class="fa-solid fa-plus"></i> -->
+                  <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel6">
+            <div id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 180px;">
+                <div id="PaymentTerms" class="grid-container" style="">
+                  <!-- <div id="PaymentTerms" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <!-- <button class="toggle-btn" data-target="#gridContainer-data">Add Row 1</button>
+                  <button class="toggle-btn" data-target="#gridContainer-data">Add Row 2</button> -->
+                  <!-- Add more buttons as needed -->
+                  <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i>
+                  <!-- <i id="AddRow" class="toggle-btn" data-target="#gridContainer-data" class="fa-solid fa-plus"></i> -->
+                  <i data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+        </div>
+
+    
+        <div style="margin: 30px 60px 0px;" class="d-flex justify-content-end button-div">
+            <button type="button" class="btn AddMenuButton" onclick="saveTheData()" id="saveTheData" > <i class="fa-solid fa-download"></i> Save </button>
+            <button type="button" class="btn AddMenuButton" value="Delete" onclick="deleteMenu()"><i class="fa-sharp fa-solid fa-trash"></i> Delete</button>
+            <button type="button" class="btn AddMenuButton" value="Update"> <i class="fa-solid fa-arrows-rotate" ></i> Clear </button> 
+            <button type="button" class="btn AddMenuButton " onclick ="displayOldData()"><i class="fa-regular fa-eye"></i> Preview</button>
+        </div>
+
+    </div>
+
+  <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+  <script src="/addVendor.js"></script>
+  <script src="/Nav&SideNav/nav&SideNav.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+function saveTheData(){
+
+  // const Obj = {};
+
+// Get form values
+const VendorMasterform = document.getElementById("VendorMasterForm");
+const vendorMaster = new FormData(VendorMasterform);
+
+// Create an object to store the form data
+const vendormaster = {};
+
+// Update checkbox values to true in the object
+for (let pair of vendorMaster.entries()) {
+  const key = pair[0];
+  const element = VendorMasterform.elements[key];
+
+  if (element.type === "checkbox") {
+    vendormaster[key] = element.checked; // Update the object property value to true
+  } else {
+    vendormaster[key] = pair[1]; // For other input types, use the FormData value as-is
+  }
+}
+
+
+
+// console.log(VendorMasterObject); // Now VendorMasterObject is a regular JavaScript object
+
+
+
+// Get form values
+const GeneralInformationForm = document.getElementById("GeneralInformationForm");
+const GeneralInformation = new FormData(GeneralInformationForm);
+
+// Create an object to store the form data
+const GeneralInfo = [];
+const GeneralInformationObject = {};
+
+
+  for (let pair of GeneralInformation.entries()) {
+    const key = pair[0];
+    const element = GeneralInformationForm.querySelector(`[name="${key}"]`);
+
+    if (element.type === "checkbox") {
+      GeneralInformationObject[key] = element.checked;
+    } else if (element.type === "file") {
+      const file = element.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          GeneralInformationObject[key] = {
+            fileName: file.name,
+            contentType: file.type,
+            data: event.target.result.split(',')[1], // Store Base64-encoded data
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    } else {
+      GeneralInformationObject[key] = pair[1];
+    }
+  }
+  GeneralInfo.push(GeneralInformationObject);
+// // Handle checkbox and file input values in the object
+// for (let pair of GeneralInformation.entries()) {
+//   const key = pair[0];
+//   const element = GeneralInformationForm.querySelector(`[name="${key}"]`); // Use querySelector to get the form element
+
+//   if (element.type === "checkbox") {
+//     GeneralInformationObject[key] = element.checked; // Update the object property value to true
+//   } 
+//   else if (element.type === "file") {
+//     GeneralInformationObject[key] = element.files[0]; // Save the selected file as File object
+//   } 
+//   else {
+//     GeneralInformationObject[key] = pair[1]; // For other input types, use the FormData value as-is
+//   }
+// }
+// GeneralInfo.push(GeneralInformationObject);
+console.log(GeneralInformationObject); // Now GeneralInformationObject is a regular JavaScript object
+
+
+// console.log(GeneralInformationObject); // Now GeneralInformationObject is a regular JavaScript object
+
+  
+  // // Iterate through the updated FormData object GeneralInformationForm
+  // for (let pair of VendorMaster.entries()) {
+  //   console.log(pair[0] + ": " + pair[1]);
+  // }
+  const ProductsServices = panel2Data();
+  const ContactPerson = panel3Data();
+  const FactoryDetails = panel4Data();
+  const ProjectAllowedtoWork = panel5Data();
+  const PaymentTerms = panel6Data();
+
+
+  vendormaster.VendorContactPerson = ContactPerson;
+  vendormaster.VendorFactoryDetails = FactoryDetails;
+  vendormaster.VendorGeneralInfo = GeneralInfo;
+  vendormaster.VendorPaymentTerms = PaymentTerms;
+  vendormaster.VendorProductService = ProductsServices;
+  vendormaster.VendorProjectAllowedToWork = ProjectAllowedtoWork;
+  console.log("VendorMasterObject",vendormaster); 
+
+
+
+
+  const columns = VendorMaster[0].columns;
+  let primaryfield;
+
+  for (let i = 0; i < columns.length; i++) {
+    if (columns[i].field == 'primary') {
+      // console.log("element",element);
+      primaryfield = document.getElementById(columns[i].id).placeholder;
+      break; // Exit the loop when the condition is met
+    }
+  }
+  
+  // let menuId = document.getElementById('MenuName').name;
+  console.log("primaryfield",primaryfield);
+
+  if(primaryfield=="****<<New>>****"){
+
+    //https://localhost:7241/api/Vendor
+    fetch("https://localhost:7241/api/Vendor", {
+      method: "POST",
+      body: JSON.stringify(vendormaster),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log("response", data))
+      .catch((error) => {
+        console.error("Error:", error);
+        // NewButton("new");
+      });
+
+  }else
+  {
+      //https://localhost:7241/api/Vendor
+      fetch(`https://localhost:7241/api/Vendor/${primaryfield}`, {
+        method: "PUT",
+        body: JSON.stringify(vendormaster),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => console.log("response", data))
+        .catch((error) => {
+          console.error("Error:", error);
+          // NewButton("new");
+        });
+  }
+
+
+}
+
+
+
+
+
+
+
+///save master image
+function saveTheData(){
+
+  // const Obj = {};
+
+// Get form values
+const VendorMasterform = document.getElementById("VendorMasterForm");
+const vendorMaster = new FormData(VendorMasterform);
+
+// // Create an object to store the form data
+// const vendormaster = {};
+let file;
+// Update checkbox values to true in the object
+for (let pair of vendorMaster.entries()) {
+  const key = pair[0];
+  const element = VendorMasterform.elements[key];
+
+  if (element.type === "checkbox") {
+    vendorMaster[key] = element.checked; // Update the object property value to true
+  } else if (element.type === "file") {
+    file = element.files[0];
+    vendorMaster[key] = element.files[0]; // Save the selected file
+  } else {
+    vendorMaster[key] = pair[1]; // For other input types, use the FormData value as-is
+  }
+}
+// for (let pair of vendormaster.entries()) {
+//   console.log(pair[0],pair[1]);
+// }
+
+
+
+// console.log(VendorMasterObject); // Now VendorMasterObject is a regular JavaScript object
+
+
+
+// Get form values
+const GeneralInformationForm = document.getElementById("GeneralInformationForm");
+const GeneralInformation = new FormData(GeneralInformationForm);
+
+// Create an object to store the form data
+const GeneralInfo = [];
+const GeneralInformationObject = {};
+
+// Handle checkbox and file input values in the object
+for (let pair of GeneralInformation.entries()) {
+  const key = pair[0];
+  const element = GeneralInformationForm.elements[key];
+
+  if (element.type === "checkbox") {
+    GeneralInformationObject[key] = element.checked; // Update the object property value to true
+  } else if (element.type === "file") {
+    GeneralInformationObject[key] = element.files[0]; // Save the selected file
+  } else {
+    GeneralInformationObject[key] = pair[1]; // For other input types, use the FormData value as-is
+  }
+}
+GeneralInfo.push(GeneralInformationObject);
+console.log(GeneralInformationObject); // Now GeneralInformationObject is a regular JavaScript object
+
+
+// console.log(GeneralInformationObject); // Now GeneralInformationObject is a regular JavaScript object
+
+  
+  // // Iterate through the updated FormData object GeneralInformationForm
+  // for (let pair of VendorMaster.entries()) {
+  //   console.log(pair[0] + ": " + pair[1]);
+  // }
+  const ProductsServices = panel2Data();
+  const ContactPerson = panel3Data();
+  const FactoryDetails = panel4Data();
+  const ProjectAllowedtoWork = panel5Data();
+  const PaymentTerms = panel6Data();
+
+  const obj = {
+    // vendormain: vendormaster,
+    VendorContactPerson: ContactPerson,
+    VendorFactoryDetails: FactoryDetails,
+    VendorGeneralInfo: GeneralInfo,
+    VendorPaymentTerms: PaymentTerms,
+    VendorProductService: ProductsServices,
+    VendorProjectAllowedToWork: ProjectAllowedtoWork
+  }
+
+  const formData = new FormData();
+  //Update checkbox values to true in the object
+  for (let pair of vendorMaster.entries()) {
+    const key = pair[0];
+    const element = VendorMasterform.elements[key];
+    formData.append(key, pair[1]); // For other input types, use the FormData value as-is
+  }
+  // // formData.append("vendormain", vendorMaster);
+
+  // formData.append("imagePath", file); // Replace with your file input element
+  // formData.append("vendorId", "");
+  // // formData.append("data", "w3e4rt");
+  // formData.append("dateUpdated", "");
+  // formData.append("updatedPC", "");
+  // formData.append("vendorTypeCode", "");
+  // formData.append("dateAdded", "");
+  // formData.append("updatedBy", "");
+  // formData.append("remarks", "");
+  // formData.append("addedPC", "");
+  // formData.append("vendorName", "");
+  // formData.append("vendorCode", "");
+  // formData.append("addedBy", "");
+  // formData.append("companyId", "1");
+  formData.append("data", JSON.stringify(obj));
+  for (let pair of formData.entries()) {
+  console.log(pair[0],pair[1]);
+  }
+
+  // formData.append("VendorContactPerson", JSON.stringify(ContactPerson));
+  // formData.append("VendorFactoryDetails", JSON.stringify(FactoryDetails));
+  // formData.append("vendorGeneralInfo", JSON.stringify(GeneralInfo));
+  // formData.append("VendorPaymentTerms", JSON.stringify(PaymentTerms));
+  // formData.append("VendorProductService", JSON.stringify(ProductsServices));
+  // formData.append("VendorProjectAllowedToWork", JSON.stringify(ProjectAllowedtoWork));
+
+
+  // vendormaster.VendorContactPerson = ContactPerson;
+  // vendormaster.VendorFactoryDetails = FactoryDetails;
+  // vendormaster.VendorGeneralInfo = GeneralInfo;
+  // vendormaster.VendorPaymentTerms = PaymentTerms;
+  // vendormaster.VendorProductService = ProductsServices;
+  // vendormaster.VendorProjectAllowedToWork = ProjectAllowedtoWork;
+  // console.log("VendorMasterObject",vendormaster); 
+
+
+    const columns = VendorMaster[0].columns;
+  let primaryfield;
+
+  for (let i = 0; i < columns.length; i++) {
+    if (columns[i].field == 'primary') {
+      // console.log("element",element);
+      primaryfield = document.getElementById(columns[i].id).placeholder;
+      break; // Exit the loop when the condition is met
+    }
+  }
+  
+  // let menuId = document.getElementById('MenuName').name;
+  console.log("primaryfield",primaryfield);
+
+  if(primaryfield=="****<<New>>****"){
+
+     // Append fields to the formData object
+  // formData.append("imagePath", file); // Replace with your file input element
+  // formData.append("vendorId", "");
+  // formData.append("data", "w3e4rt");
+  // formData.append("dateUpdated", "");
+  // formData.append("updatedPC", "");
+  // formData.append("vendorTypeCode", "");
+  // formData.append("dateAdded", "");
+  // formData.append("updatedBy", "");
+  // formData.append("remarks", "");
+  // formData.append("addedPC", "");
+  // formData.append("vendorName", "");
+  // formData.append("vendorCode", "");
+  // formData.append("addedBy", "");
+  // formData.append("companyId", "1");
+
+  // Make the Fetch API request
+  fetch("https://localhost:7241/api/Vendor", {
+    method: "POST",
+    headers: {
+      Accept: "*/*",
+    },
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // Handle the response data
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      // Handle errors
+    });
+
+  // Convert the formData object to JSON
+  // const jsonData = JSON.stringify(formData);
+
+  // // Make the Fetch API request
+  // fetch("https://localhost:7241/api/Vendor", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Accept: "*/*",
+  //   },
+  //   body: formData,
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     // Handle the response data
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //     // Handle errors
+  //   });
+    // //https://localhost:7241/api/Vendor
+    // fetch("https://localhost:7241/api/Vendor", {
+    //   method: "POST",
+    //   body: JSON.stringify(vendormaster),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data)=> {
+    //     console.log("response", data);
+    //     alert( data.message);
+    //     NewButton();
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //     // alert(error.message);
+    //   });
+
+  }
+
+
+}
+

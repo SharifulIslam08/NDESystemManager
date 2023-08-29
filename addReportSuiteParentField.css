@@ -1,0 +1,165 @@
+:root {
+  --icon-color: #3986ac;
+  --inputBorder-color: rgb(175, 200, 221);
+  --IconBorder-color: #bbbbbb;
+  --bottominputBorder: #a3a3a3;
+  --bottom1stRow: #d4e2e9;
+  --borderColor: #a3a3a3;
+  --buttonColor: rgb(64, 161, 218);
+}
+#motherDiv {
+  /* border: 1px solid #000000; */
+  /* margin: 5px 3%;
+  /* background-color: #000000; */
+  margin: 30px 60px 0px 60px;
+}
+#AddMenuSectionName {
+  background-color: rgb(20, 159, 250);
+  color: black;
+  padding: 2px;
+  padding-left: 6px;
+  font-weight: 600;
+}
+.AddMenuInputContainer {
+  /* margin-top: 6px; */
+  /* border-bottom: 1px solid rgb(20, 159, 250); */
+  border: 1px solid rgb(20, 159, 250);
+
+
+}
+
+/* .AddMenuSearchIcon {
+  padding: 5px 4px 0px;
+} */
+
+
+/* .AddMenuInputContainer ::placeholder ,.AddMenuInputContainer  option,.AddMenuInputContainer  input{ */
+.AddMenuInputContainer input,
+.AddMenuInputContainer textarea {
+  color: rgb(68, 68, 68);
+  font-size: 13px;
+  padding: 2px 4px !important;
+  margin-bottom: 4px;
+  border: 1px solid rgb(20, 159, 250);
+
+  /* padding: 16px 16px; */
+}
+
+.AddMenuInputContainer select{
+  color: rgb(68, 68, 68);
+  font-size: 13px;
+  padding: 2px 4px !important;
+  border: 1px solid rgb(20, 159, 250);
+  margin-bottom: 4px;
+  /* padding: 16px 16px; */
+}
+/* .inputRow {
+  margin: 3px 0;
+} */
+
+
+.bottomField1stRow {
+  /* background-color: #fff; */
+  font-weight: 500;
+}
+
+.bottom-1st-row-icon {
+  color: #d4e2e9;
+}
+.SalesBottomFieldSearchIcon {
+  padding: 5px !important;
+  margin: 0 !important;
+}
+.AddRowDiv {
+  background-color: var(--bottom1stRow);
+}
+.AddRowDiv i {
+  color: var(--icon-color) !important;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+/* .AddMenuButton{
+  color: var(--icon-color);
+} */
+
+.button-div {
+  margin: 10px 0;
+}
+.AddMenuButton {
+  width: 120px;
+  background-color: #0075ca !important;
+  margin: 5px;
+  color: #fff !important;
+  padding: 3px 8px !important;
+}
+
+
+/* tushar css start */
+
+.grid-item {
+  border: 1px solid #ddd;
+  /* padding: 10px; */
+  /* height: 100%; */
+  text-align: center;
+  word-break: break-word;
+  /* width: 120px !important; */
+  padding: 5px !important;
+  margin: 0% !important;
+}
+/* #gridContainer{
+  display: flex;
+  flex-direction: column;
+} */
+.grid-container .row {
+  /* margin-bottom: 10px; */
+  /* background-color: rgb(206, 193, 218); */
+  width: max-content;
+  display: flex;
+  /* --bs-gutter-x: 8px !important; */
+  /* margin-bottom: 10px; */
+  /* border: 1px solid rgb(175, 200, 221) !important; */
+}
+.col {
+  /* border: 1px solid #ddd; */
+  padding: 0% !important;
+  margin: 0% !important;
+  /* padding: 10px; */
+  /* flex-basis: 0;
+  flex-grow: 1;
+  background-color: aquamarine;*/
+  /* width: 120px !important; */
+}
+.headerRow {
+  background-color: rgb(20, 159, 250);
+  color: black;
+  font-weight: 500;
+  /* height: 2rem; */
+  text-align: center !important;
+  /* width: 1570px !important; */
+}
+#DynamicDetailsTable {
+
+  border: 1px solid rgb(20, 159, 250);
+  /* align-items: center; */
+  /* margin-bottom: 10px;
+  padding-bottom: 10px; */
+  margin-top: 6px !important;
+  /* height: 10%; */
+  font-size: 13px;
+  width: 100% !important;
+  overflow-x: auto !important;
+  white-space: nowrap !important;
+  /* background-color: blue; */
+  /* align-items: center !important; */
+}
+#gridContainer-data {
+  /* margin-left: -4px; */
+  width: 100% !important;
+  /* height: 120px !important;
+  overflow-y: auto !important;
+  white-space: nowrap !important; */
+  /* border: 1px solid #3986ac; */
+}
+
+/* tushar css end */

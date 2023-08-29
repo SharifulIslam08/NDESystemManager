@@ -1,0 +1,871 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #8ef8fc;
+    color: #333;
+}
+
+.container {
+    max-width: 700px;
+    /* max-height: 600px; */
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /* background-color: #20a785; */
+}
+
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: flex;
+    margin-top: 10px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.checkbox label {
+    position: relative;
+    cursor: pointer;
+    padding-left: 30px;
+}
+input[type="checkbox"] {
+    margin-top: 6px;
+    /* width: 60%; */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* height: 10%; */
+
+}
+
+.checkbox span {
+    margin-left: 10px;
+}
+
+/* .parentName {
+    width:  25px !important;
+}
+
+.parentName option {
+    max-width: 25px !important; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } */
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="/HTML-LogIn/UserInfo.css">
+  <link rel="stylesheet" href="/Nav&SideNav/nav&SideNav.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-*******************" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href="path/to/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+
+</head>
+
+<body style="background-color:aliceblue;">
+  <div id="Nav&SideNav"></div>
+  <div class="container bg-primary-subtle bg-opacity-10 col-sm-3 col-md-4 col-lg-5">
+       <h1 class="text-center"><u><i>User Registration</i></u></h1>
+           <br>
+             <div >
+                 <form id="createUserForm">
+                               <div class="row">
+                                       <div class="col">
+                                          <label for="userCode">User Code:</label>
+                                          <input class="form-control" id="userCode" type="text" name="userCode" required>
+                                        </div>
+                                        <div class="col">
+                                          <label for="userName">Full Name:</label>
+                                          <input type="text" class="form-control" id="userName" name="userName" required>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col">
+                                            <label for="password">Password:</label>
+                                            <input type="password" class="form-control" id="password" name="password"  required>
+                                        </div>
+                                        <div class="col">
+                                             <label for="employeeId">Employee:</label>
+                                          <div class="input-group mb-0">
+                                              <input type="text" class="form-control" id="employeeId" aria-describedby="button-addon2" readonly>
+                                              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#employeeInfoModal" id="showEmployeeInfoBtn">
+                                              <i class="fas fa-search"></i>
+                                             </button>
+                                          </div>
+                                        </div>
+                                </div>
+                              <div class="row">
+                                      <div class="col">
+                                            <label for="email">Email:</label>
+                                            <input type="email" class="form-control" id="email" name="email">
+                                      </div>
+                              </div>
+                              <div class="row">
+                                      <div class="col">
+                                            <label for="defaultModuleId">Default Module:</label>
+                                            <select class="form-control" id="defaultModuleId" name="defaultModuleId" data-live-search="true" required>
+                                            </select>
+                                      </div>        
+                                      <div class="col">
+                                            <label for="defaultCompanyId">Default Company:</label>
+                                            <select class="form-control" id="defaultCompanyId" name="defaultCompanyId" data-live-search="true" required>
+                                            </select>
+                                      </div>
+                              </div>
+
+                              <div class="row">
+                                      <div class="col">
+                                            <input type="checkbox" class="form-check-input m-2" id="isAdmin">
+                                            <label class="form-check-label m-2" for="isAdmin">Admin</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" class="form-check-input m-2" id="isActive">
+                                            <label class="form-check-label m-2" for="isActive">Active</label>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" class="form-check-input m-2" id="isAudit">
+                                            <label class="form-check-label m-2" for="isAudit">Audit</label>
+                                        </div>
+                              </div>
+                              <div class="d-flex justify-content-around m-2 p-2 ">
+                                      <button type="submit" class="btn btn-outline-success">Save</button>
+                                      <button type="button" class="btn btn-outline-secondary">Update</button>
+                                      <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#userInfoModal" id="showUserInfoBtn">Search</button>
+                                      <button type="button" class="btn btn-outline-success" id="clearBTN" onclick="clearForm()">Clear</button>
+                                      <button type="button" class="btn btn-outline-success" id="deleteUserBtn" onclick="deleteUserFunction()">Delete</button>
+                               </div>
+                  </form>
+            </div>
+      </div>
+              
+<!-- Model 1 -->
+    <div class="modal fade" id="employeeInfoModal" tabindex="-1" aria-labelledby="registrationFormLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content col-sm-3 col-md-4 col-lg-5" style="width: 150% !important; left: -40% !important;">
+          <div class="modal-header">
+          <h1 class="modal-title fs-5" id="registrationFormLabel">Employee Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body col-sm-8 col-md-12 col-lg-12">
+              <div class="container" style="height: 400px; overflow-y: scroll; white-space: nowrap !important;">
+                  <table class="table table-striped">
+                  <thead class="sticky">
+                      <tr>
+                      <div>
+                          <div class="row-contentSearch fw-bold px-4 id-search ">
+                            <input type="text" id="searchedDisplayID" class="form-control" placeholder="Employee Display Id"
+                            onkeyup="ApprovalSearch()">
+                          </div>
+                          <br>
+                      </div>
+                      </tr>
+                      <tr class=" bg-light">
+                        <th>Employee ID</th>
+                        <th>Employee Code</th>
+                        <th>Display ID</th>
+                        <th>Salutation</th>
+                        <th>User Name</th>
+                        <th>Active</th>
+                        <th>Designation Code</th>
+                        <th>Department Code</th>
+                        <th>Section Code</th>
+                        <th>Joining Date</th>
+                      </tr>
+                  </thead>
+                  <tbody class="container" id="employeeTableBody" style="height: 400px; overflow-y: scroll; white-space: nowrap !important;">
+                      <!-- Employee data will be dynamically added here -->
+                  </tbody>
+                  </table>
+              </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="closeModalBTN" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+      </div>
+  </div>
+
+
+<!-- Modal 2 -->
+  <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content col-sm-3 col-md-4 col-lg-5" style="width: 150% !important; left: -40% !important;">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="userInfoModalLabel">Employee Info</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body col-sm-8 col-md-12 col-lg-12">
+            <div class="container" style="height: 400px; overflow-y: scroll; white-space: nowrap !important;">
+                <table class="table table-striped">
+                <thead class="sticky">
+                    <tr>
+                    <div>
+                        <div class="row-contentSearch fw-bold px-4 id-search ">
+                          <input type="text" id="searchedUserCode" class="form-control" onkeyup="ApprovalSearch2()">
+                        </div>
+                        <br>
+                    </div>
+                    </tr>
+                    <tr class=" bg-light">
+                      <th>User Code</th>
+                        <th>User Name</th>
+                        <th>Password</th>
+                        <th>Employee ID</th>
+                        <th>Display ID</th>
+                        <th>Email</th>
+                        <th>Default Module ID</th>
+                        <th> Module Name</th>
+                        <th>Default Company ID</th>
+                        <th>Company Name</th>
+                        <th>Is Admin</th>
+                        <th>Is Audit</th>
+                        <th>Is Active</th>
+                      </tr>
+                </thead>
+                <tbody class="container" id="UserTableBody" style="height: 400px; overflow-y: scroll; white-space: nowrap !important;">
+                    <!-- Employee data will be dynamically added here -->
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="closeModalBTN2" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+
+
+  <script src="/HTML-LogIn/UserInfo.js"></script>
+  <script src="/Nav&SideNav/nav&SideNav.js"></script>
+  <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+//Nav&SideNav load
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarContainer = document.getElementById("Nav&SideNav");
+
+  // Fetch the content of navbar.html
+  fetch("/Nav&SideNav/nav&SideNav.html")
+    .then((response) => response.text())
+    .then((data) => {
+      // Load the navbar HTML content into the navbarContainer
+      navbarContainer.innerHTML = data;
+      console.log("html fetch");
+      loadmodules();
+      loadReports();
+    })
+    .catch((error) => {
+      console.error("Error loading the navbar:", error);
+    });
+});
+
+
+
+
+
+function createUser(event) {
+  event.preventDefault();
+
+  // Get form values
+  const userCode = document.getElementById('userCode').value;
+  const userName = document.getElementById('userName').value;
+  const password = document.getElementById('password').value;
+  const email = document.getElementById('email').value;
+  // const employeeId = document.getElementById('employeeId').value;
+  const employeeId = document.getElementById('employeeId').getAttribute('name');
+
+  const defaultModuleId = document.getElementById('defaultModuleId').value;
+  const defaultCompanyId = document.getElementById('defaultCompanyId').value;
+  const isAdmin = document.getElementById('isAdmin').checked;
+  const isActive = document.getElementById('isActive').checked;
+  const isAudit = document.getElementById('isAudit').checked;
+
+  // Create the user object
+  const user = {
+    UserCode: userCode,
+    UserName: userName,
+    Password: password,
+    Email: email,
+    EmployeeId: employeeId,
+    DefaultModuleId: defaultModuleId,
+    DefaultCompanyId: defaultCompanyId,
+    IsAdmin: isAdmin,
+    IsActive: isActive,
+    IsAudit: isAudit
+  };
+console.log(user,"ceeate user");
+
+  // // Send POST request to server
+  fetch('https://localhost:7241/api/User/CreateUser', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === 'User created successfully') {
+        alert(data.message);
+  
+        // getUserInfo();
+      } else if (data.message === 'User updated successfully') {
+        alert(data.message);
+        // getUserInfo();
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+function clearForm() {
+  console.log('clear Form');
+const form = document.getElementById('createUserForm');
+  form.reset();
+  const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+}  
+
+function redirectToPage(url) {
+  setTimeout(function () {
+    window.location.href = url;
+  }, 1000);
+}
+
+const form = document.getElementById('createUserForm');
+form.addEventListener('submit', createUser);
+
+
+// // Update User Functionality
+// function updateUser(user) {
+//   fetch('https://localhost:7162/api/User/UpdateUser', {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(user)
+//   })
+//   .then(response => {
+//     if (response.ok) {
+//       // User updated successfully
+//       return response.json();
+//     } else {
+//       // Failed to update user
+//       // throw new Error('Error: ' + response.status);
+//     }
+//   })
+//   .then(data => {
+//     console.log(data.message);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+// }
+
+// document.getElementById('createUserForm').addEventListener('submit', function(event) {
+//   event.preventDefault();
+
+
+//   var user = {
+//     UserCode: document.getElementById('userCode').value,
+//     UserName: document.getElementById('userName').value,
+//     Password: document.getElementById('password').value,
+//     EmployeeId: document.getElementById('employeeId').value,
+//     Email: document.getElementById('email').value,
+//     DefaultModuleId: document.getElementById('defaultModuleId').value,
+//     DefaultCompanyId: document.getElementById('defaultCompanyId').value,
+//     IsAdmin: document.getElementById('isAdmin').checked,
+//     IsAudit: document.getElementById('isAudit').checked,
+//     IsActive: document.getElementById('isActive').checked
+//   };
+
+//   updateUser(user);
+// });
+
+
+
+
+let selectedRow = null;
+let EmployeeId = null;
+
+function getEmployeeInfo() {
+
+  console.log("getEmployeeInfo");
+  fetch('https://localhost:7241/api/Employee')
+    .then(response => response.json())
+    .then(data => {
+      console.log("aise");
+      const tableBody = document.getElementById('employeeTableBody');
+      tableBody.innerHTML = '';
+
+      data.forEach(employee => {
+        console.log("data");
+        const row = document.createElement('tr');
+        row.classList.add('rowValues');
+        row.addEventListener('dblclick', () => {
+          selectRowData(row, employee);
+          console.log("row");
+        });
+
+        let index = 0;
+        
+        for (const key in employee) {
+          const cell = document.createElement('td');
+          cell.textContent = employee[key];
+
+          if (index === 0) {
+            cell.classList.add('employeeID');
+          } else if (index === 1) {
+            cell.classList.add('employeeCode');
+          }else if (index === 2) {
+            cell.classList.add('displayID');
+          }  else if (index === 3) {
+            cell.classList.add('salutation');
+          } else if (index === 4) {
+            cell.classList.add('userName');
+          } else if (index === 5) {
+            cell.classList.add('active');
+          } else if (index === 6) {
+            cell.classList.add('designationCode');
+          } else if (index === 7) {
+            cell.classList.add('departmentCode');
+          } else if (index === 8) {
+            cell.classList.add('sectionCode');
+          } else if (index === 9) {
+            cell.classList.add('joiningDate');
+          }
+
+          row.appendChild(cell);
+          index++;
+        }
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function selectRowData(row, employee) {
+  if (selectedRow) {
+    selectedRow.classList.remove('selected');
+  }
+
+  row.classList.add('selected');
+  selectedRow = row;
+  EmployeeId = employee.EmployeeId;
+  EmployeeDisplayId = employee.EmployeeDisplayId;
+  console.log(employee.EmployeeDisplayId);
+  // console.log(employee);
+  console.log(EmployeeId);
+  const employeeId = document.getElementById('employeeId');
+  // console.log(employeeId,"employeeId");
+   employeeId.setAttribute('name',`${EmployeeId}`);
+   employeeId.value = EmployeeDisplayId;
+        const closeBTN = document.getElementById('closeModalBTN');
+        closeBTN.click();
+}
+
+document.getElementById('showEmployeeInfoBtn').addEventListener('click', getEmployeeInfo);
+
+
+
+function getUserInfo() {
+  fetch('https://localhost:7241/api/User/GetAllUserInfo')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.getElementById('UserTableBody');
+      tableBody.innerHTML = '';
+
+      data.forEach(UserInfo => {
+        const row = document.createElement('tr');
+        row.classList.add('useRowValues');
+        row.addEventListener('dblclick', () => {
+          selectData(row, UserInfo);
+        });
+
+        let index = 0; // Counter for property index
+        
+        for (const key in UserInfo) {
+          const cell = document.createElement('td');
+          cell.textContent = UserInfo[key];
+          if (index === 0) {
+            cell.classList.add('userCode');
+          } else if (index === 1) {
+            cell.classList.add('userName');
+          }else if (index === 2) {
+            cell.classList.add('password');
+          }  else if (index === 3) {
+            cell.classList.add('employeeId');
+          }  else if (index === 4) {
+            cell.classList.add('employeeDisplayId');
+          }else if (index === 5) {
+            cell.classList.add('email');
+          } else if (index === 6) {
+            cell.classList.add('defaultModuleId');
+          }else if (index === 7) {
+            cell.classList.add('moduleName');
+          } else if (index === 8) {
+            cell.classList.add('defaultCompanyId');
+          } else if (index === 9) {
+            cell.classList.add('companyName');
+          }else if (index === 10) {
+            cell.classList.add('isAdmin');
+          } else if (index === 11) {
+            cell.classList.add('isAudit');
+          } else if (index === 12) {
+            cell.classList.add('isActive');
+          }
+
+          row.appendChild(cell);
+          index++;
+        }
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function selectData(row, UserInfo) {
+  console.log(UserInfo,"selcted user info");
+  if (selectedRow) {
+    selectedRow.classList.remove('selected');
+  }
+
+  row.classList.add('selected');
+  selectedRow = row;
+
+  // UserName = UserInfo.UserName;
+
+  employeeId = UserInfo.EmployeeId;
+  employeeDisplayId = UserInfo.EmployeeDisplayId;
+  console.log(UserInfo.EmployeeId);
+  console.log(employeeId);
+  const EmployeeId = document.getElementById('employeeId');
+    EmployeeId.setAttribute('name',`${employeeId}`);
+  EmployeeId.value = employeeDisplayId;
+
+   userCode =UserInfo.userCode;
+
+  console.log(userCode,"userCode");
+  // console.log(UserInfo.UserCode,"UserInfo.UserCode");
+
+  const UserCode = document.getElementById('userCode');
+  // UserCode.setAttribute('id',`${userCode}`);
+  UserCode.value = userCode;
+
+  userName = UserInfo.userName;
+
+  console.log("userName",userName);
+  // console.log(UserInfo.UserName);
+
+  const UserNamedisplay = document.getElementById('userName');
+  console.log(UserNamedisplay);
+
+  // UserName.setAttribute('id',`${userName}`);
+  UserNamedisplay.value=userName;
+
+  password = UserInfo.password;
+  // console.log(password);
+  // console.log(UserInfo.Password);
+
+  const Password = document.getElementById('password');
+  // Password.setAttribute('id',`${password}`);
+  Password.value = password;
+
+  // email = UserInfo.gmail;
+  // console.log(email);
+  // console.log(UserInfo.Email);
+
+  const Email = document.getElementById('email');
+  //  Email.setAttribute('id',`${email}`);
+  // Email.setAttribute('value',`${UserInfo.Email}`);
+  Email.value= UserInfo.gmail;
+  
+  defaultModuleId = UserInfo.DefaultModuleId;
+  ModuleName = UserInfo.moduleName;
+  // console.log(ModuleName, "ModuleName");
+  // console.log(UserInfo.DefaultModuleId);
+  // console.log(defaultModuleId);
+
+  const defaultModuleSelect = document.getElementById('defaultModuleId');
+  defaultModuleSelect.value = defaultModuleId;
+  
+  defaultCompanyId = UserInfo.defaultCompanyId;
+  CompanyName = UserInfo.companyName;
+  // console.log(CompanyName, "CompanyName");
+  // console.log(defaultCompanyId, "defaultCompanyId");
+  // console.log(UserInfo.DefaultCompanyId);
+  const defaultCompanySelect = document.getElementById('defaultCompanyId');
+  defaultCompanySelect.value = defaultCompanyId;
+  
+
+  // const DefaultCompanyId = document.getElementById('defaultCompanyId');
+  // DefaultCompanyId.option[1]=true;
+  // // DefaultCompanyId.innerHTML="";
+  // let option = document.createElement("option");
+  // option.setAttribute('id',`${defaultCompanyId}`);
+  // // option.setAttribute('selected',`${UserInfo.CompanyName}`);
+  // option.text = UserInfo.CompanyName;
+  // DefaultCompanyId.appendChild(option);
+  // console.log("DefaultCompanyId",DefaultCompanyId);
+  // const defaultCompanyId = UserInfo.CompanyId; // Assuming you have the desired default company ID
+
+  isAdmin = UserInfo.isAdmin;
+  console.log(isAdmin);
+  console.log(UserInfo.isAdmin);
+
+  const IsAdmin = document.getElementById('isAdmin');
+  // IsAdmin.setAttribute('id',`${isAdmin}`);
+  IsAdmin.setAttribute('checked',`${isAdmin}`);
+
+  isActive = UserInfo.isActive;
+  console.log(isActive);
+  console.log(UserInfo.isActive);
+
+  const IsActive = document.getElementById('isActive');
+  // IsActive.setAttribute('id',`${isActive}`);
+  IsActive.setAttribute('checked',`${isActive}`);
+
+  isAudit = UserInfo.isAudit;
+  console.log(isAudit);
+  console.log(UserInfo.isAudit);
+
+  const IsAudit = document.getElementById('isAudit');
+  // IsAudit.setAttribute('id',`${isAudit}`);
+  IsAudit.setAttribute('checked',`${isAudit}`);
+        const closeBTN = document.getElementById('closeModalBTN2');
+        closeBTN.click();
+}
+
+ // Function to delete a user
+ function deleteUser(userCode) {
+  fetch(`https://localhost:7241/api/User/DeleteUser/${userCode}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); // Log the response data for debugging purposes
+      clearForm();
+      alert(data.message);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
+
+
+function deleteUserFunction() {
+  console.log("delete");
+  const userCodeElement = document.getElementById('userCode');
+  const userCode = userCodeElement.value;
+
+  if (userCode) {
+    deleteUser(userCode);
+     console.log(userCode,"userCode");
+  } else {
+    console.log('Invalid user code');
+  }
+}
+
+document.getElementById('showUserInfoBtn').addEventListener('click', getUserInfo);
+
+document.addEventListener('DOMContentLoaded', function() {
+  function loadModules() {
+    fetch('https://localhost:7241/api/Module')
+      .then(function(response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error occurred while loading modules.');
+        }
+      })
+      .then(function(data) {
+        var selectElement = document.getElementById('defaultModuleId');
+        selectElement.innerHTML = '';
+
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = '--Select Module--';
+        selectElement.appendChild(defaultOption);
+
+        data.forEach(function(module) {
+          var option = document.createElement('option');
+          option.id = module.moduleId;
+          option.value = module.moduleId;
+          option.text = module.moduleName;
+          selectElement.appendChild(option);
+        });
+      })
+      .catch(function(error) {
+        console.log(error.message);
+      });
+  }
+  loadModules();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  function loadCompany() {
+    fetch('https://localhost:7241/api/ActiveCompany')
+      .then(function(response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error occurred while loading modules.');
+        }
+      })
+      .then(function(data) {
+        var selectElement = document.getElementById('defaultCompanyId');
+        selectElement.innerHTML = '';
+
+        var defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.text = '--Select Company--';
+        selectElement.appendChild(defaultOption);
+
+        data.forEach(function(company) {
+          var option = document.createElement('option');
+          option.id = company.CompanyId;
+          option.value = company.CompanyId;
+          option.text = company.CompanyName;
+          selectElement.appendChild(option);
+        });
+      })
+      .catch(function(error) {
+        console.log(error.message);
+      });
+  }
+  loadCompany();
+});
+
+
+// fetch('https://localhost:7162/api/GetCompany')
+//   .then(response => response.json())
+//   .then(data => {
+//     const tableBody = document.querySelector('#companyTable tbody');
+
+//     // Clear existing table rows
+//     tableBody.innerHTML = '';
+
+//     // Iterate over the data and add rows to the table
+//     data.forEach(row => {
+//       const newRow = tableBody.insertRow();
+
+//       // Iterate over the row data and add cells to the row
+//       Object.values(row).forEach(value => {
+//         const newCell = newRow.insertCell();
+//         const newText = document.createTextNode(value);
+//         newCell.appendChild(newText);
+//       });
+//     });
+//   })
+//   .catch(error => {
+//     console.error('Error:', error);
+//   });
+
+
+// function ApprovalSearch(IdSearch, EmployeeDisplayId) {
+//   const idSearch = document.getElementById(IdSearch).value.toLowerCase();
+//   const rows = document.querySelectorAll('tr');
+  
+//   console.log(rows,"fdhgf");
+//   rows.forEach((row) => {
+//     const idRowValue = row.querySelector(EmployeeDisplayId);
+  //   const displayId = idRowValue.textContent.toLowerCase();
+    
+  //   if (displayId.includes(idSearch) || idSearch === "") {
+  //     row.style.display = "flex";
+  //   } else {
+  //     row.style.display = "none";
+  //   }
+//   });
+// }
+
+
+
+
+
+function ApprovalSearch() {
+
+
+  const searchedDisplayIDValue = document.getElementById("searchedDisplayID").value;
+  const rows = document.querySelectorAll(".rowValues");
+
+  rows.forEach(row=>{
+
+     const displayIDRow = row.querySelector(".displayID");
+    const displayID = displayIDRow.textContent;
+    if (searchedDisplayIDValue === "" || displayID.includes(searchedDisplayIDValue)) {
+      row.style.display = "table-row";
+    } else {
+      row.style.display = "none";
+    }
+  })
+}
+
+function ApprovalSearch2() {
+
+
+  const searchedUserCodeValue = document.getElementById("searchedUserCode").value.toLowerCase();
+  //console.log(searchedUserCodeValue,"searchfsdkdjf");
+  const rows = document.querySelectorAll(".useRowValues");
+  console.log(rows,"searchfsdkdjf");
+
+  rows.forEach(row=>{
+
+     const UserCodeRow = row.querySelector(".userCode");
+    const UserCode = UserCodeRow.textContent.toLowerCase();
+    if (searchedUserCodeValue === "" || UserCode.includes(searchedUserCodeValue)) {
+      row.style.display = "table-row";
+    } else {
+      row.style.display = "none";
+    }
+  })
+}
+
+
+if (!localStorage.getItem('mytime')) {
+  window.location.href = './index.html';
+}
+
+function logOut() {
+  window.location.href = './index.html';
+  localStorage.removeItem('mytime');
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/HTML-LogIn/st.css"/>
+    <!-- <link rel="stylesheet" href="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap-grid.css"> -->
+    <title>Login Page</title>
+</head>
+
+<body>
+
+    <div class="login-card-container col-sm-4 col-md-6 col-lg-4">
+        <div class="login-card col-sm-4 col-md-6 col-lg-4">
+            <div class="login-card-logo">
+            </div>
+            <div class="login-card-header">
+                <h1>Log In</h1>
+            </div>
+            <form class="login-card-form " id="loginForm">
+                <div class="form-item ">
+                    <input type="text"  placeholder="Enter User Name"id="loginUser"  
+                    autofocus required>
+                </div>
+                <div class="form-item">
+                    <input type="password" placeholder="Enter Password"id="loginPassword"
+                     required>
+                </div>
+
+                <div class="form-item">
+                    <select type="" class="drop-login" id="defaultCompanyId" name="defaultCompanyId" data-live-search="true"
+                     required > </select>
+                </div>
+               
+                <div class="form-item-other">
+                    <div class="checkbox">
+                        <input type="checkbox" class="w-100%"  checked>
+                        <label >Remember me</label>
+                    </div>
+                </div>
+                    <button type="submit">Login</button>
+            </form>
+
+        </div>
+    </div>
+    <script src="/HTML-LogIn/All.js"></script>
+<!-- <script src="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.js"></script> -->
+</body>
+</html>

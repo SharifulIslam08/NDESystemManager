@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vendor Form</title>
+    <link rel="stylesheet" href="/addVendor.css">
+    <link rel="stylesheet" href="/Nav&SideNav/nav&SideNav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+</head>
+  <body>
+    <div id="Nav&SideNav"></div>
+    <div id="motherDiv">
+        <!-- <div id ="AddMenuSectionName">Add Menu</div> -->
+        <div id="VendorMaster" class=" AddMenuInputContainer">
+        </div>
+        <div class="mt-2">
+          <div style="background-color: #0075ca;" class="d-inline-flex gap-1">
+            <button class="btn active toggle-btn" data-target="#panel1">General Information</button>
+            <button class="btn toggle-btn" data-target="#panel2">Vendor`s Products & Services</button>
+            <button class="btn toggle-btn" data-target="#panel3">Contact Person</button>
+            <button class="btn toggle-btn" data-target="#panel4">Factory Details</button>
+            <button class="btn toggle-btn" data-target="#panel5">Project Allowed to Work</button>
+            <button class="btn toggle-btn" data-target="#panel6">Payment Terms</button>
+            <!-- Add more buttons as needed -->
+          </div>
+          <div  class="collapse show mt-3" id="panel1">
+            <div style="height: 234px; width: 100% !important; overflow-x: auto !important; white-space: nowrap !important;" id="GeneralInformation" class="AddMenuInputContainer">
+            </div>
+          </div>
+          <div class="collapse" id="panel2">
+            <div style="border: 1px solid rgb(20, 159, 250) !important" id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 200px;">
+                <div id="VendorsProductsServices" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="VendorsProductsServices" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data2" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i id="AddRow2" class="fa-solid fa-plus"></i>
+                  <i id="DeleteRow2" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+             </div>
+          </div>
+  
+          <div class="collapse" id="panel3">
+            <div style="border: 1px solid rgb(20, 159, 250) !important" id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 200px;">
+                <div id="ContactPerson" class="grid-container" style="margin-right: 5px !important;">
+                  <!-- <div id="ContactPerson" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data3" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <!-- <i class="toggle-btn fa-solid fa-plus" data-target="#panel1"></i> -->
+                  <i id="AddRow3" class="fa-solid fa-plus"></i>
+                  <i id="DeleteRow3" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel4">
+            <div style="border: 1px solid rgb(20, 159, 250) !important" id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 200px;">
+                <div id="FactoryDetails" class="grid-container" style="">
+                  <!-- <div id="FactoryDetails" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data4" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i id="AddRow4" class="fa-solid fa-plus"></i>
+                  <i id="DeleteRow4" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel5">
+            <div style="border: 1px solid rgb(20, 159, 250) !important" id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 200px;">
+                <div id="ProjectAllowedtoWork" class="grid-container" style="">
+                  <!-- <div id="ProjectAllowedtoWork" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data5" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i id="AddRow5" class="fa-solid fa-plus"></i>
+                  <i id="DeleteRow5" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+  
+          <div class="collapse" id="panel6">
+            <div style="border: 1px solid rgb(20, 159, 250) !important" id="details" class="border mt-3">
+              <div id="DynamicDetailsTable" class="" style="height: 200px;">
+                <div id="PaymentTerms" class="grid-container" style="">
+                  <!-- <div id="PaymentTerms" class="">
+                  </div> -->
+                </div>
+                <div class="grid-container " id="gridContainer-data6" >
+                </div>
+              </div>
+                <!-- Table Footer -->
+                <div id="tableFooter" class="grid-container p-1" style="background-color: rgb(175, 200, 221);">
+                  <i id="AddRow6" class="fa-solid fa-plus"></i>
+                  <i id="DeleteRow6" class="fa-solid fa-trash deleteButtonBottomField"></i>
+                </div>
+              </div>
+          </div>
+        </div>
+
+    
+        <div style="margin: 30px -3px 0px" class="d-flex justify-content-end button-div">
+            <button type="button" class="btn AddMenuButton" onclick="saveTheData()" id="saveTheData" > <i class="fa-solid fa-download"></i> Save </button>
+            <button type="button" class="btn AddMenuButton" value="Delete" onclick="deleteVendor()"><i class="fa-sharp fa-solid fa-trash"></i> Delete</button>
+            <button type="button" class="btn AddMenuButton" value="Update"> <i class="fa-solid fa-arrows-rotate" ></i> Clear </button> 
+            <button type="button" class="btn AddMenuButton " onclick ="displayOldData()"><i class="fa-regular fa-eye"></i> Preview</button>
+        </div>
+
+
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ShowVendorList">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="ShowVendorList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Vendor List</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container" style="height: 400px; overflow-y: scroll; white-space: nowrap !important;">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <div >
+                  <div class="row-contentSearch fw-bold px-4 id-search">
+                    <input type="text" id="searchedDisplayID" class="form-control" placeholder="Enter Vendor Code">
+                  </div>
+                </div>
+              </tr>
+              <tr>
+                <th>Vendor Id</th>
+                <th>Vendor Code</th>
+                <th>Vendor Name</th>
+              </tr>
+            </thead>
+            <tbody id="VendorTableBody">
+              <!-- Employee data will be dynamically added here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+
+  <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+  <script src="/addVendor.js"></script>
+  <script src="/Nav&SideNav/nav&SideNav.js"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav & SideNav</title>
+    <link rel="stylesheet" href="/Nav&SideNav/nav&SideNav.css">
+    <link rel="stylesheet" href="/bootstrap-5.3.0-alpha3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- <a href="/HTML-LogIn/index.html"></a> -->
+    <!-- <section  id="sidenavsection">
+        <div class="" id="sidebar" style="z-index: 1; overflow-y: auto !important; white-space: nowrap !important;">
+          <div>
+
+            <p onclick="blocknonemenudata()">My Menu <i class="fa-solid fa-chevron-up fa-rotate-180"></i></p>
+            <div id="loadMenu" style="display: none;">
+    
+            </div>
+          </div>
+          <div>
+            <p onclick="blocknoneReportdata()">My Report <i class="fa-solid fa-chevron-up fa-rotate-180"></i></p>
+            <div id="loadReport" style="display: none;">
+    
+            </div>
+          </div>
+        </div>
+    </section> -->
+    
+    <section id="MenuAndSideNavSection">
+        <div class="container-fluid text-center">
+            <div class="row" style="box-shadow: 0px 0 13px 4px #bbb8b8; background-color: #0075ca;">
+              <div class="col-1">
+                <div class="pt-1 ps-1">
+                  <i style="font-size: 22px;color: #fff;" onclick="SidebarButton()" id="SidebarButton" class="fa-solid fa-bars"></i>
+                  <!-- <div><label class="text-wrap" id="clickedModuleName" style="line-height: 1;"><h5>NDE ERP System</h5></label></div> -->
+                </div>
+              </div>
+              <div id="menubar" class="col-10">
+              </div>
+              <div class="col-1">
+                <div style="position: relative; top: 7px;">
+                  <i style="color: #fff;" onclick="showpopup()" class="fa-solid fa-user"></i>
+                  <p style="color: #fff;" id="ShowuserName" for=""></p>
+                </div>
+                <div id="showpopup" style="display: none; width: 150px; position: absolute; top: 3rem; right: .05rem;">
+                  <button class="w-100 btn btn-light" onclick="logOut()"> logOut</button>
+                  <!-- <a class="btn-check w-100" href="/userInformation.html">Change Password</a> -->
+                  <button type="button" class="w-100 btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Change Pass.</button>
+                  <a href="/userInformation.html"><button class="w-100 btn btn-light">  User Profile </button></a>
+                </div>
+              </div>
+            </div>
+            <section  id="sidenavsection">
+              <div class="" id="sidebar" style="z-index: 10000; overflow-y: auto !important; white-space: nowrap !important;">
+                <div>
+      
+                  <p onclick="blocknonemenudata()">My Menu <i class="fa-solid fa-chevron-up fa-rotate-180"></i></p>
+                  <div id="loadMenu" style="display: none;">
+          
+                  </div>
+                </div>
+                <div>
+                  <p onclick="blocknoneReportdata()">My Report <i class="fa-solid fa-chevron-up fa-rotate-180"></i></p>
+                  <div id="loadReport" style="display: none;">
+          
+                  </div>
+                </div>
+              </div>
+          </section>
+        </div>
+    </section>
+
+    <!-- bootstrap modal -->
+  
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="myForm">
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Old Password:</label>
+                <input type="text" class="form-control" id="OldPassword">
+              </div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">New Password:</label>
+                <input type="text" class="form-control" id="NewPassword">
+              </div>
+              <div class="mb-3">
+                <label for="message-text" class="col-form-label">Confirm Password:</label>
+                <input type="text" class="form-control" id="ConfirmPassword">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" onclick="updatepassword()" class="btn btn-primary">ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="/Nav&SideNav/nav&SideNav.js"></script>
+    <script src="/bootstrap-5.3.0-alpha3-dist/js/bootstrap.js"></script>
+</body>
+</html>

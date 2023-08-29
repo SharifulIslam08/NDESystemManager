@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="./All.css">
+  <link rel="stylesheet" href="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.css">
+  <title>Login</title>
+
+</head>
+<body class="d-flex align-items-center">
+  <div class="login-wrapper my-auto">
+    <form action=""  id="loginForm" class="form col-sm-6 col-md-4 col-lg-3 ">
+      <h2>Log In</h2>
+      <div class="input-group ">
+        <input type="text" id="loginUser" required>
+        <label for="loginUser">User Name</label>
+      </div>
+      <div class="input-group">
+        <input type="password" id="loginPassword" required>
+        <label for="loginPassword">Password</label>
+      </div>
+
+      <div class="input-group">
+
+        <label for="defaultCompanyId">Default Company:</label>
+        <select style="background: linear-gradient(to top, #86c0cf, #bfe1f8);;" class="form-control" id="defaultCompanyId" name="defaultCompanyId" data-live-search="true" required>
+        </select>
+        </select>      
+      </div>
+      <br>
+      <div>
+      <div>
+      <label class="checkbox">
+        <input type="checkbox" value="remember-me">Remember me
+      </label>
+      </div>
+      <div>
+        <button type="submit" class="submit-btn btn-outline-info">Login</button>
+      </div>
+    </div>
+    </form>
+
+<script src="./All.js"></script>
+<script src="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+  
+</body>
+</html>

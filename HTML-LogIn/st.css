@@ -1,0 +1,268 @@
+body {
+    font-family: 'poppins-medium-regular', sans-serif;
+    min-height: 100vh;
+    /* background: linear-gradient(to right, #e3b8ff, #e1f7f8); */
+    background-image: url('./Images/Untitled-3.jpg');
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: end;
+    align-items: center;
+    margin-right: 4rem;
+}
+
+
+/* Login Card */
+.login-card {
+    width: 300px;
+    background: rgba(132, 165, 255, 0.288);
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid #35339a33;
+    box-shadow: black;
+    /* border: 6px #35339a; */
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 181, 43, 0.199);
+    transform: rotate(-6deg);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+/* Login Card Standard */
+.login-card-logo,
+.login-card-header,
+.login-card-footer {
+    text-align: center;
+}
+/* 
+.login-card a {
+    text-decoration: none;
+    color: #35339a;
+}
+
+.login-card a:hover {
+    text-decoration: underline;
+} */
+/* ---------- */
+
+/* Login Card Header */
+.login-card-header {
+    margin-bottom: 2rem;
+}
+
+.login-card-header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    color: #0072CE;
+}
+
+.login-card-header h1+div {
+    /* font-size: calc(1rem * .8); */
+    opacity: .8;
+}
+/* ---------- */
+
+/* Login Card Form */
+.login-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-card-form .form-item {
+    position: relative;
+}
+
+.login-card-form .form-item .form-item-icon {
+    position: absolute;
+    top: .82rem;
+    left: 1.4rem;
+    font-size: 1.3rem;
+    opacity: .4;
+}
+
+.login-card-form .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.login-card-form .form-item-other {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: calc(1rem * .8);
+    margin-bottom: .5rem;
+}
+/* ---------- */
+
+/* Login Card Footer */
+.login-card-footer {
+    margin-top: 1.5rem;
+    font-size: calc(1rem * .8);
+}
+/* ---------- */
+
+/* Login Card Form Elements */
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="email"] {
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.904);
+    padding:.8rem 1.5rem;
+
+    border-radius: 50px;
+    width: 260px;
+    padding: 13px;
+
+    border: none;
+    position: relative;
+    transition: background .5s;
+}
+
+.login-card input:focus {
+    background: white;
+}
+
+.login-card input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color:#598cfc;
+}
+
+.login-card button {
+    background: #95c9f3;
+    /* color: white; */
+    padding: 1rem;
+    border-radius: 100px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background .5s;
+    border : none;
+}
+
+.login-card button:hover {
+    background-color:#3ea7fd;
+    cursor: pointer;
+}
+/* ---------- */
+
+.drop-login{
+    width: 288px;
+    padding: 13px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.904);
+    border: none;
+    position: relative;
+}
+/* Responsive for Mobile View (max-width: 768px) */
+ @media (max-width: 768px) {
+
+    body {
+        background-image: url(./Images/Untitled-2.2.jpg);
+      margin: 0;
+      padding: 2rem; 
+    }
+  
+    .login-card-container {
+      justify-content: center;
+      align-items: center; 
+      min-height: 100vh;
+    }
+  
+    .login-card {
+      width: 70%;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+  
+    .login-card::before {
+      display: none; 
+    }
+  
+    .login-card h1 {
+      font-size: 1.5rem;
+    }
+  
+    .login-card input[type="text"],
+    .login-card input[type="password"],
+    .login-card input[type="email"],
+    .login-card select {
+      width: 90%; 
+    }
+    .drop-login{
+        width: 100%;
+    }
+  
+    .login-card button {
+      width: 100%;
+    }
+  
+    .login-card .form-item {
+      margin-bottom: 1rem;
+    }
+  
+    .login-card-form {
+      gap: 1rem; 
+    }
+  } 
+  @media (max-width: 725px) {
+
+    body {
+        background-image: url(./Images/Untitled-2.jpg);
+      margin: 0;
+      padding: 2rem; 
+    }
+  
+    .login-card-container {
+      justify-content: center;
+      align-items: center; 
+      min-height: 100vh;
+    }
+  
+    .login-card {
+      width: 70%;
+      max-width: 350px;
+      margin: 0 auto;
+    }
+  
+    .login-card::before {
+      display: none; 
+    }
+  
+    .login-card h1 {
+      font-size: 1.5rem;
+    }
+  
+    .login-card input[type="text"],
+    .login-card input[type="password"],
+    .login-card input[type="email"],
+    .login-card select {
+      width: 90%; 
+    }
+    .drop-login{
+        width: 90%;
+    }
+  
+    .login-card button {
+      width: 100%;
+    }
+  
+    .login-card .form-item {
+      margin-bottom: 1rem;
+    }
+  
+    .login-card-form {
+      gap: 1rem; 
+    }
+  }
+  

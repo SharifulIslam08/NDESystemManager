@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Menu</title>
+</head>
+<body>
+  <div id="menu-container"></div>
+
+
+
+  <script>
+const jsonData = [
+    {
+      "menuId": 2,
+      "moduleId": 1,
+      "menuName": "SECURITY",
+      "parentId": 2,
+      "pageName": null,
+      "tabCaption": null,
+      "navigateUrl": null,
+      "tabWidth": 0,
+      "pageHeight": 0,
+      "isVisible": true,
+      "seqNo": 2
+    },
+    {
+      "menuId": 5,
+      "moduleId": 1,
+      "menuName": "USER APPLICATION",
+      "parentId": 5,
+      "pageName": null,
+      "tabCaption": null,
+      "navigateUrl": null,
+      "tabWidth": 0,
+      "pageHeight": 0,
+      "isVisible": true,
+      "seqNo": 2
+    },
+    {
+      "menuId": 230,
+      "moduleId": 1,
+      "menuName": "Analysis Group",
+      "parentId": 227,
+      "pageName": "BOQ_AnalysisGroup",
+      "tabCaption": "Analysis Group",
+      "navigateUrl": "AnalysisGroup/AnalysisGroup",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 231,
+      "moduleId": 1,
+      "menuName": "Analysis Sub Group",
+      "parentId": 227,
+      "pageName": "BOQ_AnalysisSubGroup",
+      "tabCaption": "Analysis Sub Group",
+      "navigateUrl": "AnalysisSubGroup/AnalysisSubGroup",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 232,
+      "moduleId": 1,
+      "menuName": "Misc Group",
+      "parentId": 227,
+      "pageName": "BOQ_MiscGroup",
+      "tabCaption": "Misc Group",
+      "navigateUrl": "MiscGroup/MiscGroup",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 233,
+      "moduleId": 1,
+      "menuName": "Misc Details",
+      "parentId": 227,
+      "pageName": "BOQ_MiscDetails",
+      "tabCaption": "Misc Details",
+      "navigateUrl": "MiscDetails/MiscDetails",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 234,
+      "moduleId": 1,
+      "menuName": "Terms Condition",
+      "parentId": 227,
+      "pageName": "HK_TermsCondition",
+      "tabCaption": "Terms Condition",
+      "navigateUrl": "CommonInterface/CommonInterface?pageHeight=550",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 235,
+      "moduleId": 1,
+      "menuName": "Rate Update",
+      "parentId": 227,
+      "pageName": "RateUpdate",
+      "tabCaption": "Rate Update",
+      "navigateUrl": "RateUpdate/RateUpdate",
+      "tabWidth": 150,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 236,
+      "moduleId": 1,
+      "menuName": "Element Rate Update",
+      "parentId": 227,
+      "pageName": "ElementRate Update",
+      "tabCaption": "Element Rate Update",
+      "navigateUrl": "RateUpdateHistory/RateUpdateHistory",
+      "tabWidth": 150,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 237,
+      "moduleId": 1,
+      "menuName": "Tran Group",
+      "parentId": 101,
+      "pageName": "BOQ_TranGroup",
+      "tabCaption": "Tran Group",
+      "navigateUrl": "CommonInterface/CommonInterface?pageHeight=550",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 0
+    },
+    {
+      "menuId": 101,
+      "moduleId": 1,
+      "menuName": "Brand",
+      "parentId": 165,
+      "pageName": "Brand",
+      "tabCaption": "Brand",
+      "navigateUrl": "Brand/Brand",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 1
+    },
+    {
+      "menuId": 40,
+      "moduleId": 1,
+      "menuName": "Blood Group",
+      "parentId": 166,
+      "pageName": "BloodGroup",
+      "tabCaption": "Blood Group",
+      "navigateUrl": "BloodGroup/BloodGroup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 2
+    },
+    {
+      "menuId": 25,
+      "moduleId": 1,
+      "menuName": "Calendar",
+      "parentId": 165,
+      "pageName": "Calendar",
+      "tabCaption": "Calendar",
+      "navigateUrl": "Calendar/Calendar",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 2
+    },
+    {
+      "menuId": 3,
+      "moduleId": 1,
+      "menuName": "User Info",
+      "parentId": 2,
+      "pageName": "UserInfo",
+      "tabCaption": "User Info",
+      "navigateUrl": "UserInfo/UserInfo",
+      "tabWidth": 120,
+      "pageHeight": 400,
+      "isVisible": true,
+      "seqNo": 3
+    },
+    {
+      "menuId": 146,
+      "moduleId": 1,
+      "menuName": "Client",
+      "parentId": 165,
+      "pageName": "Client",
+      "tabCaption": "Client",
+      "navigateUrl": "Client/Client",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 3
+    },
+    {
+      "menuId": 165,
+      "moduleId": 1,
+      "menuName": "COMMON",
+      "parentId": 5,
+      "pageName": null,
+      "tabCaption": null,
+      "navigateUrl": null,
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 3
+    },
+    {
+      "menuId": 228,
+      "moduleId": 1,
+      "menuName": "Labour Particle",
+      "parentId": 227,
+      "pageName": "LabourParticle",
+      "tabCaption": "LabourParticle",
+      "navigateUrl": "LabourParticle/LabourParticle",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 4
+    },
+    {
+      "menuId": 4,
+      "moduleId": 1,
+      "menuName": "User Permission",
+      "parentId": 2,
+      "pageName": "UserPermission",
+      "tabCaption": "User Permission",
+      "navigateUrl": "UserPermission/UserPermission",
+      "tabWidth": 140,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 4
+    },
+    {
+      "menuId": 16,
+      "moduleId": 1,
+      "menuName": "Country",
+      "parentId": 165,
+      "pageName": "Country",
+      "tabCaption": "Country",
+      "navigateUrl": "Country/Country",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 4
+    },
+    {
+      "menuId": 12,
+      "moduleId": 1,
+      "menuName": "Currency",
+      "parentId": 165,
+      "pageName": "Currency",
+      "tabCaption": "Currency",
+      "navigateUrl": "Currency/Currency",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 5
+    },
+    {
+      "menuId": 229,
+      "moduleId": 1,
+      "menuName": "Labour Group ",
+      "parentId": 227,
+      "pageName": "LabourGroup",
+      "tabCaption": "LabourGroup",
+      "navigateUrl": "LabourGroup/LabourGroup",
+      "tabWidth": 150,
+      "pageHeight": 650,
+      "isVisible": true,
+      "seqNo": 5
+    },
+    {
+      "menuId": 130,
+      "moduleId": 1,
+      "menuName": "Dynamic Interface",
+      "parentId": 2,
+      "pageName": "DynamicInterface",
+      "tabCaption": "Account Type",
+      "navigateUrl": "DynamicInterface/DynamicInterface",
+      "tabWidth": 140,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 6
+    },
+    {
+      "menuId": 46,
+      "moduleId": 1,
+      "menuName": "Depreciation Rule",
+      "parentId": 165,
+      "pageName": "DepreciationRule",
+      "tabCaption": "Depreciation Rule",
+      "navigateUrl": "DepreciationRule/DepreciationRule",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 6
+    },
+    {
+      "menuId": 17,
+      "moduleId": 1,
+      "menuName": "Division",
+      "parentId": 165,
+      "pageName": "Division",
+      "tabCaption": "Division",
+      "navigateUrl": "Division/Division",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 7
+    },
+    {
+      "menuId": 36,
+      "moduleId": 1,
+      "menuName": "Employee Position",
+      "parentId": 166,
+      "pageName": "Department",
+      "tabCaption": "Employee Position",
+      "navigateUrl": "Department/Department",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 7
+    },
+    {
+      "menuId": 24,
+      "moduleId": 1,
+      "menuName": "Goods Definition",
+      "parentId": 165,
+      "pageName": "GoodsDefinition",
+      "tabCaption": "Goods Definition",
+      "navigateUrl": "GoodsDefinition/GoodsDefinition",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 8
+    },
+    {
+      "menuId": 23,
+      "moduleId": 1,
+      "menuName": "Goods Group",
+      "parentId": 165,
+      "pageName": "GoodsGroup",
+      "tabCaption": "Goods Group",
+      "navigateUrl": "GoodsGroup/GoodsGroup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 9
+    },
+    {
+      "menuId": 20,
+      "moduleId": 1,
+      "menuName": "Project Approval",
+      "parentId": 165,
+      "pageName": "ProjectApproval",
+      "tabCaption": "Project Approval",
+      "navigateUrl": "ProjectInfo/ProjectApproval",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 10
+    },
+    {
+      "menuId": 19,
+      "moduleId": 1,
+      "menuName": "Project Info",
+      "parentId": 165,
+      "pageName": "ProjectInfo",
+      "tabCaption": "Project Info",
+      "navigateUrl": "ProjectInfo/ProjectInfo",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 11
+    },
+    {
+      "menuId": 166,
+      "moduleId": 1,
+      "menuName": "H R M",
+      "parentId": 5,
+      "pageName": null,
+      "tabCaption": null,
+      "navigateUrl": null,
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 11
+    },
+    {
+      "menuId": 14,
+      "moduleId": 1,
+      "menuName": "Project Type",
+      "parentId": 165,
+      "pageName": "ProjectType",
+      "tabCaption": "Project Type",
+      "navigateUrl": "ProjectType/ProjectType",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 12
+    },
+    {
+      "menuId": 227,
+      "moduleId": 1,
+      "menuName": "BOQ",
+      "parentId": 5,
+      "pageName": null,
+      "tabCaption": null,
+      "navigateUrl": null,
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 12
+    },
+    {
+      "menuId": 200,
+      "moduleId": 1,
+      "menuName": "Routing",
+      "parentId": 165,
+      "pageName": "Routing",
+      "tabCaption": "Routing",
+      "navigateUrl": "Routing/Routing",
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 13
+    },
+    {
+      "menuId": 41,
+      "moduleId": 1,
+      "menuName": "Leave Type Setup",
+      "parentId": 166,
+      "pageName": "LeaveTypeSetup",
+      "tabCaption": "Leave Type Setup",
+      "navigateUrl": "LeaveTypeSetup/LeaveTypeSetup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 13
+    },
+    {
+      "menuId": 21,
+      "moduleId": 1,
+      "menuName": "Store Location",
+      "parentId": 165,
+      "pageName": "StoreLocation",
+      "tabCaption": "Store Location",
+      "navigateUrl": "Store/Store",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 14
+    },
+    {
+      "menuId": 510,
+      "moduleId": 1,
+      "menuName": "Scrap Configaration",
+      "parentId": 165,
+      "pageName": "ScrapConfigaration",
+      "tabCaption": "Scrap Configaration",
+      "navigateUrl": "ScrapConfigaration/ScrapConfigaration",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 14
+    },
+    {
+      "menuId": 11,
+      "moduleId": 1,
+      "menuName": "Unit",
+      "parentId": 165,
+      "pageName": "Unit",
+      "tabCaption": "Unit",
+      "navigateUrl": "Unit/Unit",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 15
+    },
+    {
+      "menuId": 10,
+      "moduleId": 1,
+      "menuName": "Unit Set",
+      "parentId": 165,
+      "pageName": "UnitSet",
+      "tabCaption": "Unit Set",
+      "navigateUrl": "UnitSet/UnitSet",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 16
+    },
+    {
+      "menuId": 18,
+      "moduleId": 1,
+      "menuName": "Salutation",
+      "parentId": 166,
+      "pageName": "Salutation",
+      "tabCaption": "Salutation",
+      "navigateUrl": "Salutation/Salutation",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 17
+    },
+    {
+      "menuId": 22,
+      "moduleId": 1,
+      "menuName": "Vendor",
+      "parentId": 165,
+      "pageName": "Vendor",
+      "tabCaption": "Vendor",
+      "navigateUrl": "Vendor/Vendor",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 17
+    },
+    {
+      "menuId": 13,
+      "moduleId": 1,
+      "menuName": "Vendor Type",
+      "parentId": 165,
+      "pageName": "VendorType",
+      "tabCaption": "Vendor Type",
+      "navigateUrl": "VendorType/VendorType",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 18
+    },
+    {
+      "menuId": 15,
+      "moduleId": 1,
+      "menuName": "Work Level",
+      "parentId": 165,
+      "pageName": "WorkLevel",
+      "tabCaption": "Work Level",
+      "navigateUrl": "WorkLevel/WorkLevel",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 19
+    },
+    {
+      "menuId": 42,
+      "moduleId": 1,
+      "menuName": "Shift Rule",
+      "parentId": 166,
+      "pageName": "ShiftRule",
+      "tabCaption": "Shift Rule",
+      "navigateUrl": "ShiftRule/ShiftRule",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 19
+    },
+    {
+      "menuId": 556,
+      "moduleId": 1,
+      "menuName": "Store-Zone With Rack",
+      "parentId": 165,
+      "pageName": "StoreZoneWithRack",
+      "tabCaption": "StoreZoneWithRack",
+      "navigateUrl": "StoreZoneWithRack/StoreZoneWithRack",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 22
+    },
+    {
+      "menuId": 37,
+      "moduleId": 1,
+      "menuName": "University",
+      "parentId": 166,
+      "pageName": "University",
+      "tabCaption": "University",
+      "navigateUrl": "University/University",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 23
+    },
+    {
+      "menuId": 83,
+      "moduleId": 1,
+      "menuName": "Leave Rule",
+      "parentId": 166,
+      "pageName": "LeaveRuleSetup",
+      "tabCaption": "Leave Rule Setup",
+      "navigateUrl": "LeaveRuleSetup/LeaveRuleSetup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 28
+    },
+    {
+      "menuId": 84,
+      "moduleId": 1,
+      "menuName": "Attendance Rule",
+      "parentId": 166,
+      "pageName": "AttendanceRule",
+      "tabCaption": "Attendance Rule",
+      "navigateUrl": "AttendanceRule/AttendanceRule",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 29
+    },
+    {
+      "menuId": 86,
+      "moduleId": 1,
+      "menuName": "Category",
+      "parentId": 166,
+      "pageName": "Category",
+      "tabCaption": "Category",
+      "navigateUrl": "Category/Category",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 30
+    },
+    {
+      "menuId": 238,
+      "moduleId": 1,
+      "menuName": "Project Wise Contact",
+      "parentId": 227,
+      "pageName": "Project Wise Contact",
+      "tabCaption": "Project Wise Contact",
+      "navigateUrl": "ProjectWiseContact/ProjectWiseContact",
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 35
+    },
+    {
+      "menuId": 141,
+      "moduleId": 1,
+      "menuName": "Deduction Rule",
+      "parentId": 166,
+      "pageName": "DeductionRule",
+      "tabCaption": "Deduction Rule",
+      "navigateUrl": "DeductionRule/DeductionRule",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 41
+    },
+    {
+      "menuId": 145,
+      "moduleId": 1,
+      "menuName": "Employee Rule Setup",
+      "parentId": 166,
+      "pageName": "EmployeeRuleSetup",
+      "tabCaption": "Employee Rule Setup",
+      "navigateUrl": "EmployeeRuleSetup/EmployeeRuleSetup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 42,
+
+    },
+    {
+      "menuId": 239,
+      "moduleId": 1,
+      "menuName": "Project Wise Tran Group",
+      "parentId": 227,
+      "pageName": "ProjectWiseTranGroup",
+      "tabCaption": "ProjectWiseTranGroup",
+      "navigateUrl": "ProjectWiseTranGroup/ProjectWiseTrangroup",
+      "tabWidth": 130,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 42
+    },
+    {
+      "menuId": 147,
+      "moduleId": 1,
+      "menuName": "Attendance Status Setup",
+      "parentId": 166,
+      "pageName": "AttendanceStatusSetup",
+      "tabCaption": "Attendance Status Setup",
+      "navigateUrl": "AttendanceStatusSetup/AttendanceStatusSetup",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 43
+    },
+    {
+      "menuId": 557,
+      "moduleId": 1,
+      "menuName": "Driver IOU Info",
+      "parentId": 165,
+      "pageName": "EmployeeIOU",
+      "tabCaption": "Employee IOU Info",
+      "navigateUrl": "EmployeeIOU/EmployeeIOU",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 50
+    },
+    {
+      "menuId": 559,
+      "moduleId": 1,
+      "menuName": "Driver IOU Approval",
+      "parentId": 165,
+      "pageName": "EmployeeIOUApproval",
+      "tabCaption": "Driver IOU Approval Info",
+      "navigateUrl": "EmployeeIOUApproval/EmployeeIOUApproval",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 51
+    },
+    {
+      "menuId": 558,
+      "moduleId": 1,
+      "menuName": "Fuel Consumption",
+      "parentId": 165,
+      "pageName": "FuelConsumption",
+      "tabCaption": "Fuel Consumption",
+      "navigateUrl": "FuelConsumption/FuelConsumption",
+      "tabWidth": 100,
+      "pageHeight": 500,
+      "isVisible": true,
+      "seqNo": 52
+    }
+  ]
+
+
+  console.log(jsonData);
+
+
+
+
+
+
+// const uniqueParentIds = [...new Set(jsonData.map(obj => obj.parentId))];
+// console.log(uniqueParentIds);
+
+// console.log(uniqueParentIds);
+// const resultArray = [];
+
+// uniqueParentIds.forEach(parentId => {
+//   const nestedObjects = jsonData.filter(obj => obj.parentId === parentId);
+//   const parentObject = nestedObjects.find(obj => obj.menuId === parentId);
+
+// //   const parentName = parentObject ? parentObject.menuName : null;
+
+//   resultArray.push({ parentId, nestedObjects });
+// });
+
+// console.log(resultArray);
+
+const uniqueParentIds = [...new Set(jsonData.map(obj => obj.parentId))];
+const resultArray = [];
+let menuItemName = ''
+
+uniqueParentIds.forEach(parentId => {
+  const nestedObjects = jsonData.filter(obj => obj.parentId === parentId);
+//   const parentObject = nestedObjects.find(obj => obj.menuId === parentId);
+  jsonData.forEach(function(item){
+    if(item.menuId === parentId){
+     menuItemName = item.menuName
+
+    }
+  })
+  resultArray.push({ parentId, menuItemName, nestedObjects });
+});
+console.log(resultArray);
+
+// function createHtml(resultArray) {
+//   let html = '';
+//   let htmlLi = ''
+
+//   resultArray.map(item => {
+//     html += `<ul>${item.menuItemName}
+//          ${item.nestedObjects.map(subItem => {
+//             htmlLi =+ `<li>${subItem.menuName}<li>`;
+//                 `${htmlLi}`;
+//          })}
+//         </ul>`;
+//   });
+//   return html;
+// }
+
+// const html = createHtml(resultArray);
+// console.log(html);
+
+
+
+function generateHTML (){
+    var mainDiv = document.createElement("div");
+    console.log(mainDiv);
+
+    const myHtml = resultArray.map(function(item){
+        return `<ul>${item.menuItemName}
+             ${item.nestedObjects.map(function(subMenuItemLi){
+             return `<li>${subMenuItemLi.menuName}</li>`
+            }).join(" ")}
+            </ul>`;
+    }).join(" ")
+    mainDiv.innerHTML = myHtml;
+    return mainDiv;
+}
+document.body.insertAdjacentElement("beforeend",generateHTML());
+  </script>
+</body>
+</html>
