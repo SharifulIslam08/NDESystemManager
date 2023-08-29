@@ -182,11 +182,12 @@ const para = [
         if (column.field == "primary") {
           const fileIcon = document.createElement("i");
           fileIcon.classList.add("fa-solid", "fa-file", "AddMenuFileIcon");
+          fileIcon.setAttribute("onclick","NewButton()");
           fileIcon.style.padding="5px 5px";
           inputColumn.appendChild(fileIcon);
           const searchIcon = document.createElement("i");
           searchIcon.classList.add("fa-solid", "fa-magnifying-glass", "AddMenuSearchIcon");
-          searchIcon.setAttribute("onclick","NewButton()");
+          // searchIcon.setAttribute("onclick","NewButton()");
           searchIcon.style.padding="5px 4px 0px";
           searchIcon.id = "getDetails"; // Not sure if you want the same ID for all search icons
           inputColumn.appendChild(searchIcon);
@@ -286,34 +287,39 @@ const para = [
   form.addEventListener("click", function (event) {
           // event.preventDefault(); // Prevent form submission
           // Get form values
-          var ParentField = document.getElementById('ParentField').value;
+          var ParentField = document.getElementById('ParentField');
           var label = document.getElementById('label').value;
           var Condition = document.getElementById('Condition').value;
           var BlankAllow = document.getElementById('BlankAllow').checked;
-  
-          var formData = new FormData();
-          formData.append('ParentField', ParentField);
-          formData.append('label', label);
-          formData.append('Condition', Condition);
-          formData.append('BlankAllow', BlankAllow);
-  
-          fetch("https://localhost:7241/ReportSuiteParentField", {
-              method: 'POST',
-              body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
-              alert(data.message);
-              var ParentField = document.getElementById('ParentField').value="";
-              var label = document.getElementById('label').value =="";
-              var Condition = document.getElementById('Condition').value ="";
-              var BlankAllow = document.getElementById('BlankAllow').checked = false;
-  
-            })
-            .catch(error => {
-              console.error(error);
-            });
+
+          if(ParentField.placeholder === "****<<New>>****"){
+            var formData = new FormData();
+            formData.append('ParentField', ParentField.value);
+            formData.append('label', label);
+            formData.append('Condition', Condition);
+            formData.append('BlankAllow', BlankAllow);
+    
+            fetch("https://localhost:7241/ReportSuiteParentField", {
+                method: 'POST',
+                body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                alert(data.message);
+                var ParentField = document.getElementById('ParentField').value="";
+                var label = document.getElementById('label').value =="";
+                var Condition = document.getElementById('Condition').value ="";
+                var BlankAllow = document.getElementById('BlankAllow').checked = false;
+    
+              })
+              .catch(error => {
+                console.error(error);
+              });
+          }else{
+            alert("Make the Form New and Fill the Form.");
+          }
+
   });
   
   

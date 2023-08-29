@@ -455,14 +455,16 @@ function saveTheData()
     if (columns[i].field == 'primary') {
       // console.log("element",element);
       primaryfield = document.getElementById(columns[i].id);
-      console.log("primaryfield",primaryfield);
+      // console.log("primaryfield",primaryfield);
       break; // Exit the loop when the condition is met
     }
   }
-  // console.log("",);
-  if(primaryfield.placeholder != "****<<New>>****"){
+  // console.log("primaryfield value",primaryfield.value);
+  if(primaryfield.value !== ''){
+    console.log("primaryfield put");
     updateMenu();
-  }else{
+  } else if(primaryfield.placeholder === "****<<New>>****"){
+    console.log("primaryfield post");
     // event.preventDefault(); // Prevent form submission
     // Get form values
     const form = document.getElementById(`${para[0].id}`);
@@ -504,6 +506,10 @@ function saveTheData()
         console.error(error);
       });
 
+  }
+  else{
+    console.log("primaryfield faka");
+    alert("Select Data for Updat or Enter Data for New Entry.");
   }
 }
 
@@ -736,19 +742,20 @@ function insertDatainform(row){
 function deleteMenu(){
   const columns = para[0].columns;
   let primaryfield;
-
+ let labelName;
   for (let i = 0; i < columns.length; i++) {
     if (columns[i].field == 'primary') {
       // console.log("element",element);
-      primaryfield = document.getElementById(columns[i].id).placeholder;
+      primaryfield = document.getElementById(columns[i].id);
+      labelName = columns[i].label;
       break; // Exit the loop when the condition is met
     }
   }
   
     // let menuId = document.getElementById('MenuName').name;
-    // console.log("menuId",menuId);
-
-    fetch(`https://localhost:7241/api/Menu/${primaryfield}`,{
+    console.log("labelName",labelName);
+  if(primaryfield.placeholder !=="****<<New>>****" && primaryfield.placeholder !==labelName){
+    fetch(`https://localhost:7241/api/Menu/${primaryfield.placeholder}`,{
       method: 'DELETE',
       })
       .then(response => response.json())
@@ -760,6 +767,10 @@ function deleteMenu(){
 
       })
       .catch(error => console.log(error))
+  }else{
+    alert("Select any Row for Delete.");
+  }
+
 }
 
 function updateMenu(){

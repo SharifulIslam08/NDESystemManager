@@ -1724,15 +1724,15 @@ const GeneralInformation = new FormData(GeneralInformationForm);
   for (let i = 0; i < columns.length; i++) {
     if (columns[i].field == 'primary') {
       // console.log("element",element);
-      primaryfield = document.getElementById(columns[i].id).placeholder;
+      primaryfield = document.getElementById(columns[i].id);
       break; // Exit the loop when the condition is met
     }
   }
   
   // let menuId = document.getElementById('MenuName').name;
-  console.log("primaryfield",primaryfield);
 
-  if(primaryfield=="****<<New>>****"){
+
+  if(primaryfield.placeholder==="****<<New>>****"){
 
 
   // Make the Fetch API request
@@ -1756,10 +1756,10 @@ const GeneralInformation = new FormData(GeneralInformationForm);
     });
 
   }
-  else
+  else if(primaryfield.value !== '')
   {
       //https://localhost:7241/api/Vendor
-      fetch(`https://localhost:7241/api/Vendor/${primaryfield}`, {
+      fetch(`https://localhost:7241/api/Vendor/${primaryfield.placeholder}`, {
         method: "PUT",
         headers: {
           Accept: "*/*",
@@ -1776,6 +1776,9 @@ const GeneralInformation = new FormData(GeneralInformationForm);
           console.error("Error:", error);
           // NewButton("new");
         });
+  }  else{
+    console.log("primaryfield faka");
+    alert("Select Data for Update or Enter Data for New Entry.");
   }
 
 
@@ -1962,11 +1965,12 @@ function panel6Data(){
 function deleteVendor(){
   const columns = VendorMaster[0].columns;
   let primaryfield;
-
+  let labelName;
   for (let i = 0; i < columns.length; i++) {
     if (columns[i].field == 'primary') {
       // console.log("element",element);
-      primaryfield = document.getElementById(columns[i].id).placeholder;
+      primaryfield = document.getElementById(columns[i].id);
+      labelName = columns[i].label;
       break; // Exit the loop when the condition is met
     }
   }
@@ -1976,9 +1980,9 @@ function deleteVendor(){
 
 
 
-    if(primaryfield != "Vendor Code"){
+    if(primaryfield.placeholder !=="****<<New>>****" && primaryfield.placeholder !==labelName){
 
-      fetch(`https://localhost:7241/api/Vendor/${primaryfield}`,{
+      fetch(`https://localhost:7241/api/Vendor/${primaryfield.placeholder}`,{
         method: 'DELETE',
         })
         .then(response => response.json())

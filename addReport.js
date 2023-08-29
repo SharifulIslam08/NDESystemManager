@@ -404,11 +404,16 @@ form.addEventListener("click", function (event) {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        alert(data.message);
-        NewButton();
+        if(data.message==="Report inserted successfully"){
+          alert(data.message);
+          NewButton();
+        }else{
+          alert("Fillup the form Currectlly for New Entry");
+        }
       })
       .catch(error => {
         console.error(error);
+        alert("Fillup the form Currectlly for New Entry");
       });
   }
 });
@@ -549,9 +554,12 @@ function deleteReport(){
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        alert(data.message);
-        NewButton();
-        searchModule();
+        if(data.message==="Report deleted successfully"){
+          alert(data.message);
+          NewButton();
+        }else{
+          alert("Fillup the form Currectlly for Delete Report");
+        }
       })
       .catch(error => console.log(error))
   }
@@ -591,9 +599,12 @@ function deleteReport(){
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      alert(data.message);
-      NewButton();
-      searchModule();
+      if(data.message==="Report updated successfully"){
+        alert(data.message);
+        NewButton();
+      }else{
+        alert("Fillup the form Currectlly for Update Report Data");
+      }
     })
     .catch(error => {
       console.error(error);

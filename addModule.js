@@ -302,9 +302,8 @@ function loadTableHeader(){
 var form = document.getElementById("saveTheData");
 form.addEventListener("click", function (event) {
   var moduleNameInput = document.getElementById('moduleName');
-  if(moduleNameInput.placeholder != "****<<New>>****"){
-    updateModule();
-  }else{
+  if(moduleNameInput.placeholder === "****<<New>>****"){
+
     // event.preventDefault(); // Prevent form submission
     // Get form values
     var moduleNameInput = document.getElementById('moduleName').value;
@@ -325,6 +324,10 @@ form.addEventListener("click", function (event) {
       formData.append('imageFile', selectedFile);
     }
     submitForm(formData);
+  }else if(moduleNameInput.value !== ''){
+    updateModule();
+  }else{
+    alert("Select Data for Update or Enter Data for New Entry.");
   }
 });
 function submitForm(formData) {
@@ -340,11 +343,16 @@ function submitForm(formData) {
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    alert(data.message);
-    NewButton();
+    if(data.message==="Module created successfully"){
+      alert(data.message);
+      NewButton();
+    }else{
+      alert("Fillup the form currectlly for New Entry.");
+    }
   })
   .catch(error => {
     console.error(error);
+    alert("Fillup the form currectlly for New Entry.");
   })
 }
 
@@ -466,17 +474,27 @@ function insertDatainform(row){
 }
 
 function deleteModule(){
-  let moduleId = document.getElementById('moduleName').name;
-  console.log("moduleId",moduleId);
-  fetch(`https://localhost:7241/api/Module/DeleteModule/${moduleId}`,{
+
+  let moduleId = document.getElementById('moduleName');
+  if(moduleId.placeholder !=="****<<New>>****" && moduleId.value !==''){
+  }else{
+
+  }
+  // console.log("moduleId",moduleId);
+  fetch(`https://localhost:7241/api/Module/DeleteModule/${moduleId.name}`,{
     method: 'DELETE',
     })
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      alert(data.message);
-      NewButton();
-      searchModule();
+      if(data.message==="Module deleted successfully"){
+        alert(data.message);
+        NewButton();
+        searchModule();
+      }else{
+        alert("Fillup The Form Currectlly.");
+      }
+
     })
     .catch(error => console.log(error))
 }

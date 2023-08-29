@@ -577,9 +577,13 @@ function deleteModule(){
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      alert(data.message);
-      NewButton();
-      searchModule();
+      if(data.message==="User deleted successfully" || data.message==="User not found"){
+        alert(data.message);
+        NewButton();
+        searchModule();
+      }else{
+        alert("Fillup the form currectlly for Delete.");
+      }
     })
     .catch(error => console.log(error))
 }
@@ -632,9 +636,13 @@ function updatemoduleData(user) {
   .then(response => response.json())
   .then(data => {
     console.log(data);
-    alert(data.message);
-    NewButton();
-    searchModule();
+    if(data.message==="User updated successfully"){
+      alert(data.message);
+      NewButton();
+      searchModule();
+    }else{
+      alert("Fillup the form currectlly for Update User.");
+    }
   })
   .catch(error => {
     console.error(error);
