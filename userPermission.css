@@ -141,3 +141,8 @@ input{
     padding: 3px 8px !important;
   }
 /* 4 button work start here */
+
+
+.col-1{
+    display: block !important;
+}

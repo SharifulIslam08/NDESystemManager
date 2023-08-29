@@ -662,11 +662,11 @@ function getEmployeeInfo() {
     // <td><img src="${module.logo}" alt="Logo" width="50"></td>
     const moduleHTML = data.map((employee) => {
       return `
-        <tr ondblclick="insertEmployeeData(this)">
+        <tr class="dataRow" ondblclick="insertEmployeeData(this)">
           <td>${employee.EmployeeId}</td>
           <td>${employee.EmployeeCode}</td>
           <td>${employee.EmployeeSalutation}</td>
-          <td>${employee.UserName}</td>
+          <td id="vendorCode">${employee.UserName}</td>
           <td>${employee.EmployeeIsActive }</td>
           <td>${employee.EmployeeDesignationCode }</td>
           <td>${employee.EmployeeDepartmentCode}</td>
@@ -752,6 +752,42 @@ function Search(key){
       //vendorName.indexOf(InputValue) != -1 &&
       if( idnamevalue.indexOf(InputValue) != -1){
           dataRow[i].style.display = "flex";
+      }else{
+          dataRow[i].style.display = "none";
+      }
+  }
+  // console.log(dataRow.length);
+}
+// search work end here
+
+
+
+// search work start here
+let searchedVendor = document.getElementById("EmployeeName");
+// console.log("searchedVendor",searchedVendor);
+searchedVendor.addEventListener('keyup', ()=>{
+  Searchemployee();
+// console.log("searchedVendor in side keyup",searchedVendor);
+
+});
+
+
+function Searchemployee(){
+  let InputValue = searchedVendor.value.toLowerCase();
+
+  let dataRow = document.getElementsByClassName("dataRow");
+  // console.log("searchedVendor in side search",dataRow);
+  for(i=0;i<dataRow.length;i++){
+      // console.log("dataRow[i].childNodes[1].innerText",InputValue);
+      let UserName = dataRow[i].querySelector("#UserName").innerText.toLowerCase();
+      // let vendorName = dataRow[i].querySelector(".vendorName");
+      // let vendorCode = dataRow[i].querySelector(".vendorCode");
+      // console.log("searchedVendor in side vendorName",vendorName);
+
+      //interface.innerHTML.toLowerCase().indexOf(interfaceInputValue) != -1
+      //vendorName.indexOf(InputValue) != -1 &&
+      if( UserName.indexOf(InputValue) != -1){
+          dataRow[i].style.display = "table-row";
       }else{
           dataRow[i].style.display = "none";
       }

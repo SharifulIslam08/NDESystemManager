@@ -668,6 +668,7 @@ function searchReport(){
 }
 // report search work end here
 
+
 // username search work start here
 let searchusername = document.getElementById("usernames");
 
@@ -696,6 +697,7 @@ function searchUserInfo(){
 }
 // report search work end here
 
+
 // select all permission View, add, modefy, delete  start here
 let sellectAllView = document.getElementById("sellectAllView");
 sellectAllView.addEventListener('change', function() {
@@ -719,9 +721,12 @@ sellectAllView.addEventListener('change', function() {
             }
         }
     }
-  });
-  let sellectAllAdd = document.getElementById("sellectAllAdd");
-  sellectAllAdd.addEventListener('change', function() {
+    allDeleteChecker(".form-check-input.view", "sellectAllView","dataRow");
+    
+});
+
+let sellectAllAdd = document.getElementById("sellectAllAdd");
+sellectAllAdd.addEventListener('change', function() {
     let dataRows = document.getElementsByClassName('dataRow');
     if (this.checked) {
         // Checkbox is checked
@@ -733,18 +738,21 @@ sellectAllView.addEventListener('change', function() {
             }
         }
     } else {
-      // Checkbox is unchecked
-      console.log("Checkbox is unchecked");
-      for (let i = 0; i < dataRows.length; i++) {
+        // Checkbox is unchecked
+        console.log("Checkbox is unchecked");
+        for (let i = 0; i < dataRows.length; i++) {
         let viewCheckbox = dataRows[i].querySelector('.form-check-input.add');
             if (viewCheckbox) {
                 viewCheckbox.checked = false;
             }
         }
     }
-  });
-  let sellectAllModify = document.getElementById("sellectAllModify");
-  sellectAllModify.addEventListener('change', function() {
+allDeleteChecker(".form-check-input.add", "sellectAllAdd","dataRow");
+
+});
+
+let sellectAllModify = document.getElementById("sellectAllModify");
+sellectAllModify.addEventListener('change', function() {
     let dataRows = document.getElementsByClassName('dataRow');
     if (this.checked) {
         // Checkbox is checked
@@ -756,39 +764,91 @@ sellectAllView.addEventListener('change', function() {
             }
         }
     } else {
-      // Checkbox is unchecked
-      console.log("Checkbox is unchecked");
-      for (let i = 0; i < dataRows.length; i++) {
+        // Checkbox is unchecked
+        console.log("Checkbox is unchecked");
+        for (let i = 0; i < dataRows.length; i++) {
         let viewCheckbox = dataRows[i].querySelector('.form-check-input.modify');
             if (viewCheckbox) {
                 viewCheckbox.checked = false;
             }
         }
     }
-  });
-  let sellectAllDelete = document.getElementById("sellectAllDelete");
-  sellectAllDelete.addEventListener('change', function() {
-    let dataRows = document.getElementsByClassName('dataRow');
-    if (this.checked) {
-        // Checkbox is checked
-        //   console.log("Checkbox is checked view");
-        for (let i = 0; i < dataRows.length; i++) {
-        let viewCheckbox = dataRows[i].querySelector('.form-check-input.delete');
-            if (viewCheckbox) {
-                viewCheckbox.checked = true;
-            }
-        }
-    } else {
-      // Checkbox is unchecked
-      console.log("Checkbox is unchecked");
-      for (let i = 0; i < dataRows.length; i++) {
-        let viewCheckbox = dataRows[i].querySelector('.form-check-input.delete');
-            if (viewCheckbox) {
-                viewCheckbox.checked = false;
-            }
+    allDeleteChecker(".form-check-input.modify", "sellectAllModify","dataRow");
+
+});
+
+let sellectAllDelete = document.getElementById("sellectAllDelete");
+sellectAllDelete.addEventListener('change', function() {
+let dataRows = document.getElementsByClassName('dataRow');
+if (this.checked) {
+    // Checkbox is checked
+    //   console.log("Checkbox is checked view");
+    for (let i = 0; i < dataRows.length; i++) {
+    let viewCheckbox = dataRows[i].querySelector('.form-check-input.delete');
+        if (viewCheckbox) {
+            viewCheckbox.checked = true;
         }
     }
-  });
+} else {
+    // Checkbox is unchecked
+    console.log("Checkbox is unchecked");
+    for (let i = 0; i < dataRows.length; i++) {
+    let viewCheckbox = dataRows[i].querySelector('.form-check-input.delete');
+        if (viewCheckbox) {
+            viewCheckbox.checked = false;
+        }
+    }
+}
+allDeleteChecker(".form-check-input.delete", "sellectAllDelete","dataRow");
+});
+
+function allDeleteChecker(chekboxClassName, AllSelectName, RowName){
+
+    // Get all elements with the class 'dataRow'
+    let dataRows = document.getElementsByClassName(RowName);
+
+    // Iterate through each dataRow element
+    console.log("(dataRows.length-2)",(dataRows.length-2),(dataRows.length-1));
+    for (let i = 0; i < dataRows.length; i++) {
+        // Get the checkbox element within the current dataRow
+        let viewCheckbox = dataRows[i].querySelector(chekboxClassName);
+        if(viewCheckbox !=null){
+            // console.log("viewCheckbox",viewCheckbox);
+            // Add a click event listener to the checkbox
+            viewCheckbox.addEventListener('click', function() {
+                // This code will be executed when the checkbox is clicked
+                if (viewCheckbox.checked) {
+                    console.log('Checkbox is checked alll aall');
+                    let a =5;
+                    for (let i = 0; i < dataRows.length; i++) {
+                        let viewCheckbox = dataRows[i].querySelector(chekboxClassName);
+                            if (viewCheckbox !=null && viewCheckbox.checked == false) {
+                                document.getElementById(AllSelectName).checked = false;
+                                a= 0;
+                                break;
+                            }
+                    }
+                    if(a!=0){
+                        document.getElementById(AllSelectName).checked = true;
+                    }
+                    // Do something when the checkbox is checked
+                } else {
+                    console.log('Checkbox is unchecked all allla aa');
+                    document.getElementById(AllSelectName).checked = false;
+                    // Do something when the checkbox is unchecked
+                }
+            });
+        }
+    }
+    
+}
+
+
+
+
+
+
+
   let sellectAllreports = document.getElementById("sellectAllreports");
   sellectAllreports.addEventListener('change', function() {
     let reportDataRow = document.getElementsByClassName('reportDataRow');
@@ -811,15 +871,16 @@ sellectAllView.addEventListener('change', function() {
             }
         }
     }
+    allDeleteChecker(".form-check-input.report", "sellectAllreports","reportDataRow");
   });
 // select all permission View, add, modefy, delete  end here
 
 
 
-if (!localStorage.getItem("mytime")) {
-    window.location.href = "/HTML-LogIn/index.html"; // Redirect to login page
-  }
-  function logOut() {
-    window.location.href = "/HTML-LogIn/index.html";
-    localStorage.removeItem("mytime");
-  }
+// if (!localStorage.getItem("mytime")) {
+//     window.location.href = "/HTML-LogIn/index.html"; // Redirect to login page
+//   }
+//   function logOut() {
+//     window.location.href = "/HTML-LogIn/index.html";
+//     localStorage.removeItem("mytime");
+//   }

@@ -786,7 +786,7 @@ function updateMenu(){
     updatemenuData(formData);
   
   }
-  function updatemenuData(formData) {
+function updatemenuData(formData) {
     // console.log("Form Data:");
     // for (let pair of formData.entries()) {
     //     console.log(pair[0] + ": " + pair[1]);
