@@ -366,9 +366,13 @@ const para = [
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          alert(data.message);
-          searchModule();
-          NewButton("new");
+          if(data.message==="ClientType inserted successfully" || data.message==="User not found"){
+            alert(data.message);
+            searchModule();
+            NewButton("new");
+          }else{
+            alert("Fillup the form currectlly for Add ClientType.");
+          }
         })
         .catch(error => {
           console.error(error);
@@ -632,9 +636,13 @@ const para = [
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          alert(data.message);
-          searchModule();
-          NewButton("new");
+          if(data.message==="ClientType deleted successfully" || data.message==="User not found"){
+            alert(data.message);
+            searchModule();
+            NewButton("new");
+          }else{
+            alert("Fillup the form currectlly for Delete ClientType.");
+          }
   
         })
         .catch(error => console.log(error))
@@ -689,9 +697,13 @@ const para = [
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        alert(data.message);
-        searchModule();
-        NewButton("new");
+        if(data.message==="ClientType updated successfully" || data.message==="User not found"){
+          alert(data.message);
+          searchModule();
+          NewButton("new");
+        }else{
+          alert("Fillup the form currectlly for Update ClientType.");
+        }
       })
       .catch(error => {
         console.error(error);

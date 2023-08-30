@@ -433,9 +433,14 @@ form.addEventListener('click', function(){
   })
     .then((response) => response.json())
     .then((data) => {
-      alert(data.message);
-      NewButton();
-      searchModule();
+      console.log(data);
+      if(data.message==="User created successfully" || data.message==="User not found"){
+        alert(data.message);
+        NewButton();
+        searchModule();
+      }else{
+        alert("Fillup the form currectlly for Create New User.");
+      }
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -585,7 +590,10 @@ function deleteModule(){
         alert("Fillup the form currectlly for Delete.");
       }
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      console.log(error);
+      alert("Fillup the form currectlly for Delete.");
+    })
 }
 function updateModule(){
   // Get form values

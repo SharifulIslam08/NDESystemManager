@@ -1319,8 +1319,13 @@ function saveTheData(){
     .then((response) => response.json())
     .then((data)=> {
       console.log("response", data);
-      alert( data.message);
-      NewButton();
+      if(data.message==="Client  inserted successfully"){
+        alert( data.message);
+        NewButton();
+      }else{
+        alert("Fillup the form currectlly for Create Client.");
+      }
+      
     })
     .catch((error) => {
       console.error("Error:", error);
@@ -1338,8 +1343,12 @@ function saveTheData(){
         .then((response) => response.json())
         .then((data)=> {
           console.log("response", data);
-          alert( data.message);
-          NewButton();
+          if(data.message==="Client updated successfully"){
+            alert( data.message);
+            NewButton();
+          }else{
+            alert("Fillup the form currectlly for updated Client.");
+          }
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -1526,8 +1535,12 @@ if (primaryfield !== "client Code") {
   })
   .then(response => response.json())
   .then(data => {
-    alert(data.message);
-    NewButton("new");
+    if(data.message==="Client and related information deleted successfully"){
+      alert(data.message);
+      NewButton("new");
+    }else{
+      alert("Fillup the form currectlly for deleted Client.");
+    }
     // ShowclientList();
   })
   .catch(error => {
